@@ -2,10 +2,9 @@ import { Container, LinearProgress } from "@mui/material";
 import React, { Suspense, useState } from "react";
 import { renderRoutes } from "react-router-config";
 import { DashBoardProps } from "lib/interfaces";
-import Header from 'shared/Header'
+import Header from "shared/Header";
 import Login from "pages/auth/Login";
 import { Link } from "react-router-dom";
-
 
 const Layout: React.FC<DashBoardProps> = ({ route }) => {
   // TODO: force user to login
@@ -16,9 +15,9 @@ const Layout: React.FC<DashBoardProps> = ({ route }) => {
   // }
 
   return (
-    <Container>
+    <Container maxWidth="lg">
       <Suspense fallback={<LinearProgress />}>
-        <Header/>
+        <Header />
         {renderRoutes(route?.routes)}
       </Suspense>
     </Container>
