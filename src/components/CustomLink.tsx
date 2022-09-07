@@ -1,6 +1,7 @@
 import { useRouteMatch, Link } from "react-router-dom";
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import AddIcon from "@mui/icons-material/Add";
 
 const useStyles = makeStyles({
     customLink: {
@@ -25,7 +26,7 @@ const CustomLink = ({ label, to, activeOnlyWhenExact }: any) => {
                 to={to}
                 className={classes.customLink}
                 style={{color: routeActive ? '#414880' : '#8B8B8B'}}>
-                {label}
+                {label} {label === "Home" ? <AddIcon fontSize="inherit"/> : ''}
             </Link>
         </Box>
     );
