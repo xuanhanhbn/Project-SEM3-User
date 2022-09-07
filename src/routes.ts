@@ -1,6 +1,5 @@
 import { Layout } from "layout";
 import { paths } from "lib/constants";
-import { Home } from "pages";
 import { lazy } from "react";
 
 const routes = [
