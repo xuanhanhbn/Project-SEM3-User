@@ -9,13 +9,12 @@ import { Carousel } from "antd";
 
 const LandingPage = () => {
   return (
-    <div >
-      LandingPage
-     {/* <Carousel autoplay className='hero-wrap js-fullheight'>
+    <div>
+     <Carousel autoplay className='hero-wrap js-fullheight'>
         <div className='home-slider js-fullheight owl-carousel'>
           <div
             className='slider-item js-fullheight'
-            style={{ backgroundImage: '@/assets/images/carousel/bg_1.jpg' }}
+            style={{ backgroundImage: 'assets/images/carousel/bg_1.jpg' }}
           >
             <div className='overlay-1'></div>
             <div className='overlay-2'></div>
@@ -47,7 +46,7 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             className='slider-item js-fullheight'
             style={{ backgroundImage: 'url(' + 'assets/images/carousel/bg_2.jpg' + ')' }}
           >
@@ -114,9 +113,9 @@ const LandingPage = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
-      </Carousel> */}
+      </Carousel>
     </div>
   )
 }

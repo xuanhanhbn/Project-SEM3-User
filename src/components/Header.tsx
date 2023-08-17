@@ -29,6 +29,7 @@ function Item(props: BoxProps) {
 
 const Header = () => {
   const trigger = useScrollTrigger();
+
   const routeArr: SelectedRoute[] = [
     {
       path: "/",
@@ -56,6 +57,7 @@ const Header = () => {
       active: false,
     }
   ];
+
   const listItems = routeArr.map((route: SelectedRoute) => {
     return (
       <Item key={route.path}>
