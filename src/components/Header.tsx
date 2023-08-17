@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "assets/images/logo/beauties-logo.png";
+import logo from "assets/images/logo/logo.png";
 import { Box, BoxProps } from "@mui/material";
 import CustomButton from "components/CustomButton";
 import CustomLink from "./CustomLink";
@@ -78,7 +78,7 @@ const Header = () => {
         }}
       >
         <Box>
-          <img src={logo} alt="logo" />
+          <img style={{width:'80px',height:'80px'}} src={logo} alt="logo" />
         </Box>
         <Box
           sx={{
@@ -90,7 +90,7 @@ const Header = () => {
           {listItems}
         </Box>
         <CustomButton variant="contained" color="secondary">
-          Contact
+          Login
         </CustomButton>
       </Box>
     </Box>
