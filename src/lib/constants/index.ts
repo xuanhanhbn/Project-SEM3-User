@@ -4,5 +4,5 @@ export const paths = {
   about: "/about",
   contact: "/contact",
   gallery: "/gallery",
-  blog: "/blog",
+  donation: "/donation",
 };

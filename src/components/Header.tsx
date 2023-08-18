@@ -188,8 +188,8 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a href="volunteer.html" className="nav-link">
-                  Volunteer
+                <a href="/gallery" className="nav-link">
+                  Gallery
                 </a>
               </li>
               <li className="nav-item">
@@ -208,7 +208,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="nav-item cta">
-                <a href="contact.html" className="nav-link">
+                <a href="/donation" className="nav-link">
                   Donate
                 </a>
               </li>
