@@ -294,7 +294,7 @@ const MainService = () => {
           <div className="row ">
             <div className="col-md-12">
               <div className="carousel-testimony owl-carousel">
-                <Carousel effect="fade" autoplay>
+                <Carousel autoplay>
                   <div>
                     <div className="item">
                       <div className="testimony-wrap d-flex">

@@ -2,7 +2,7 @@
 export const paths = {
   Landing: "/",
   about: "/about",
-  service: "/service",
+  contact: "/contact",
   gallery: "/gallery",
-  blog: "/blog"
+  blog: "/blog",
 };

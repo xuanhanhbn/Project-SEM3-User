@@ -17,8 +17,8 @@ const routes = [
         component: lazy(() => import("pages/about/AboutPage")),
       },
       {
-        path: paths.service,
-        component: lazy(() => import("pages/service/ServicePage")),
+        path: paths.contact,
+        component: lazy(() => import("pages/contact/ContactPage")),
       },
     ],
   },
