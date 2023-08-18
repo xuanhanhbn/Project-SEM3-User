@@ -97,7 +97,7 @@ function ContactPage() {
                         <p>
                           <span>Email:</span>{" "}
                           <a href="mailto:info@yoursite.com">
-                            info@yoursite.com
+                            giveaid@website.com
                           </a>
                         </p>
                       </div>
