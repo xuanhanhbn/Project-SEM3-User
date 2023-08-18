@@ -15,9 +15,9 @@ const Layout: React.FC<DashBoardProps> = ({ route }) => {
   // }
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" style={{ padding: 0 }}>
       <Suspense fallback={<LinearProgress />}>
-        <Header/>
+        <Header />
         {renderRoutes(route?.routes)}
       </Suspense>
     </Container>
