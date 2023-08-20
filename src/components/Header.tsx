@@ -32,45 +32,54 @@ function Item(props: BoxProps) {
 const Header = () => {
   const trigger = useScrollTrigger();
 
-  // const routeArr: SelectedRoute[] = [
-  //   {
-  //     path: "/",
-  //     label: "Home",
-  //     active: true,
-  //   },
-  //   {
-  //     path: "/about",
-  //     label: "About",
-  //     active: false,
-  //   },
-  //   {
-  //     path: "/service",
-  //     label: "Service",
-  //     active: false,
-  //   },
-  //   {
-  //     path: "/gallery",
-  //     label: "Gallery",
-  //     active: false,
-  //   },
-  //   {
-  //     path: "/blog",
-  //     label: "Blog",
-  //     active: false,
-  //   },
-  // ];
+  const routeArr: SelectedRoute[] = [
+    {
+      path: "/",
+      label: "Home",
+      active: true,
+    },
+    {
+      path: "/about",
+      label: "About",
+      active: false,
+    },
+    {
+      path: "/gallery",
+      label: "Gallery",
+      active: false,
+    },
+    {
+      path: "/outpartner",
+      label: "Our partners",
+      active: false,
+    },
+    {
+      path: "/helpcentre",
+      label: "Help centre",
+      active: false,
+    },
+    {
+      path: "/contact",
+      label: "Contact",
+      active: false,
+    },
+    {
+      path: "/donation",
+      label: "Donation",
+      active: false,
+    },
+  ];
 
-  // const listItems = routeArr.map((route: SelectedRoute) => {
-  //   return (
-  //     <Item key={route.path}>
-  //       <CustomLink
-  //         to={route.path}
-  //         label={route.label}
-  //         activeOnlyWhenExact={route.active}
-  //       ></CustomLink>
-  //     </Item>
-  //   );
-  // });
+  const listItems = routeArr.map((route: SelectedRoute) => {
+    return (
+      <CustomLink
+        key={route.path}
+        to={route.path}
+        label={route.label}
+        activeOnlyWhenExact={route.active}
+      ></CustomLink>
+    );
+  });
   return (
     <div>
       <div className="wrap">
@@ -177,7 +186,7 @@ const Header = () => {
 
           <div className="collapse navbar-collapse" id="ftco-nav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
+              {/* <li className="nav-item ">
                 <a href="/" className="nav-link">
                   Home
                 </a>
@@ -211,7 +220,8 @@ const Header = () => {
                 <a href="/donation" className="nav-link">
                   Donate
                 </a>
-              </li>
+              </li> */}
+              {listItems}
             </ul>
           </div>
         </div>
