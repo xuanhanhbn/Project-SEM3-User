@@ -31,6 +31,7 @@ function DonationPage() {
           </div>
         </div>
       </section>
+      
 
       <section className="ftco-section">
         <div className="container">
