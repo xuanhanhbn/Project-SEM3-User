@@ -29,8 +29,8 @@ const routes = [
         component: lazy(() => import("pages/donation/DonationPage")),
       },
       {
-        path: paths.outpartner,
-        component: lazy(() => import("pages/outpartner/OurPartnerPage")),
+        path: paths.ourpartner,
+        component: lazy(() => import("pages/ourpartner/OurPartnerPage")),
       },
       {
         path: paths.helpcentre,

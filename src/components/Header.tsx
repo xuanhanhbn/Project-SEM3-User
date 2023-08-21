@@ -13,22 +13,6 @@ export interface SelectedRoute {
   active: boolean;
 }
 
-function Item(props: BoxProps) {
-  const { sx, ...other } = props;
-  return (
-    <Box
-      sx={{
-        fontSize: "16px",
-        fontWeight: "500",
-        padding: "0px 23px",
-        letterSpacing: "2px",
-        ...sx,
-      }}
-      {...other}
-    />
-  );
-}
-
 const Header = () => {
   const trigger = useScrollTrigger();
 
@@ -49,7 +33,7 @@ const Header = () => {
       active: false,
     },
     {
-      path: "/outpartner",
+      path: "/ourpartner",
       label: "Our partners",
       active: false,
     },
@@ -185,44 +169,7 @@ const Header = () => {
           </button>
 
           <div className="collapse navbar-collapse" id="ftco-nav">
-            <ul className="navbar-nav ml-auto">
-              {/* <li className="nav-item ">
-                <a href="/" className="nav-link">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/about" className="nav-link">
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/gallery" className="nav-link">
-                  Gallery
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/outpartner" className="nav-link">
-                  Our Partners
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/helpcentre" className="nav-link">
-                  Help Centre
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="/contact" className="nav-link">
-                  Contact
-                </a>
-              </li>
-              <li className="nav-item cta">
-                <a href="/donation" className="nav-link">
-                  Donate
-                </a>
-              </li> */}
-              {listItems}
-            </ul>
+            <ul className="navbar-nav ml-auto">{listItems}</ul>
           </div>
         </div>
       </nav>

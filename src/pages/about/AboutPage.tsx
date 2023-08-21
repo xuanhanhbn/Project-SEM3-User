@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Container } from "@mui/material";
 import bg2 from "assets/images/carousel/bg_2.jpg";
+import bg3 from "assets/images/carousel/bg_3.jpg";
 import { Carousel } from "antd";
 import person1 from "assets/images/business/person_1.jpg";
 import person2 from "assets/images/business/person_2.jpg";
@@ -26,7 +27,7 @@ const AboutPage = () => {
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
                   </a>
-                </span>{" "}
+                </span>
                 <span>
                   About us <i className="ion-ios-arrow-forward"></i>
                 </span>
@@ -43,7 +44,10 @@ const AboutPage = () => {
             <div className="col-md-6 d-flex order-md-last">
               <div
                 className="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-                // style="background-image:url(images/about-1.jpg);"
+                style={{
+                  backgroundImage: `url(  ${bg3})`,
+                  marginTop: 30,
+                }}
               ></div>
             </div>
             <div className="col-md-6 pr-md-5 py-md-5">
@@ -138,7 +142,6 @@ const AboutPage = () => {
             <div className="col-md-3 mb-5 mb-md-0 text-center text-md-left">
               <h2
                 className="font-weight-bold"
-                // style="color: #fff; font-size: 22px;"
                 style={{ color: "#fff", fontSize: "22px" }}
               >
                 We're on a mission to help all your problems
