@@ -4,14 +4,16 @@ import createSagaMiddleware from 'redux-saga';
 import { history } from 'utils';
 import { all } from 'redux-saga/effects';
 
-// import rootSaga from './rootSaga';
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
+
 });
 function* rootSaga() {
-  yield all([])
+  yield all([]);
 }
+
+
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
   reducer: rootReducer,
@@ -20,6 +22,8 @@ export const store = configureStore({
 });
 
 sagaMiddleware.run(rootSaga);
+
+export { default as Actions } from "./actions";
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

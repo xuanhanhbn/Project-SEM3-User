@@ -15,7 +15,7 @@ function Footer() {
                 with the necessary regelialia.
               </p>
               <ul className="ftco-footer-social p-0">
-                <li className="ftco-animate">
+                <li>
                   <a
                     href="#"
                     data-toggle="tooltip"
@@ -25,7 +25,7 @@ function Footer() {
                     <span className="fa fa-twitter"></span>
                   </a>
                 </li>
-                <li className="ftco-animate">
+                <li>
                   <a
                     href="#"
                     data-toggle="tooltip"
@@ -35,7 +35,7 @@ function Footer() {
                     <span className="fa fa-facebook"></span>
                   </a>
                 </li>
-                <li className="ftco-animate">
+                <li>
                   <a
                     href="#"
                     data-toggle="tooltip"

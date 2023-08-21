@@ -7,7 +7,7 @@ import "assets/styles/bootstrap.min.css";
 import "assets/styles/flaticon.css";
 import "assets/styles/jquery.timepicker.css";
 import "assets/styles/magnific-popup.css";
-// import "assets/styles/owl.carousel.min.css";
+import "assets/styles/owl.carousel.min.css";
 import "assets/styles/owl.theme.default.min.css";
 import "assets/css/index.css";
 

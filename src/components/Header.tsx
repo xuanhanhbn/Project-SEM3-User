@@ -61,7 +61,7 @@ const Header = () => {
         to={route.path}
         label={route.label}
         activeOnlyWhenExact={route.active}
-      ></CustomLink>
+      />
     );
   });
   return (

@@ -13395,10 +13395,7 @@ textarea.form-control {
   height: inherit !important;
 }
 
-.ftco-animate {
-  opacity: 0;
-  visibility: hidden;
-}
+
 
 .about-author .desc h3 {
   font-size: 24px;

@@ -25,6 +25,7 @@ const LandingPage = () => {
   const { register, handleSubmit, control } = useForm();
   const onSubmit = (data: any) => console.log(data);
 
+
   return (
     <>
       {/* carousel */}
@@ -249,7 +250,7 @@ const LandingPage = () => {
                       <div className="form-group">
                         <label htmlFor="name">Payment Method</label>
                         <div className="d-lg-flex">
-                        
+
                           <Controller
                             control={control}
                             render={({ field: { onChange, value } }) => (

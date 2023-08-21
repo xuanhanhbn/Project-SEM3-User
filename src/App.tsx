@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Actions } from "./store";
+// import { Actions } from "./store";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { getDesignTokens } from "lib/themes";
 import { renderRoutes } from "react-router-config";
@@ -14,7 +14,7 @@ import { createBrowserHistory } from "history";
 const history: any = createBrowserHistory();
 
 function App() {
-  const mode = useSelector((state: RootState) => state.Web.mode);
+  const mode = 'light';
   // const dispatch = useDispatch();
 
   // // Get mode from cookie in the first access page
