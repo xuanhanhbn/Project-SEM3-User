@@ -17,8 +17,24 @@ const routes = [
         component: lazy(() => import("pages/about/AboutPage")),
       },
       {
-        path: paths.service,
-        component: lazy(() => import("pages/service/ServicePage")),
+        path: paths.contact,
+        component: lazy(() => import("pages/contact/ContactPage")),
+      },
+      {
+        path: paths.gallery,
+        component: lazy(() => import("pages/gallery/GalleryPage")),
+      },
+      {
+        path: paths.donation,
+        component: lazy(() => import("pages/donation/DonationPage")),
+      },
+      {
+        path: paths.ourpartner,
+        component: lazy(() => import("pages/ourpartner/OurPartnerPage")),
+      },
+      {
+        path: paths.helpcentre,
+        component: lazy(() => import("pages/helpcentre/HelpCentrePage")),
       },
     ],
   },

@@ -5,6 +5,7 @@ import { DashBoardProps } from "lib/interfaces";
 import Header from "components/Header";
 import Login from "pages/auth/Login";
 import { Link } from "react-router-dom";
+import Footer from "components/Footer";
 
 const Layout: React.FC<DashBoardProps> = ({ route }) => {
   // TODO: force user to login
@@ -15,10 +16,11 @@ const Layout: React.FC<DashBoardProps> = ({ route }) => {
   // }
 
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" style={{ padding: 0 }}>
       <Suspense fallback={<LinearProgress />}>
-        <Header/>
+        <Header />
         {renderRoutes(route?.routes)}
+        <Footer />
       </Suspense>
     </Container>
   );
