@@ -48,15 +48,15 @@ const MainService = () => {
       {/* hoat dong  */}
       <section className="ftco-section ftco-no-pb">
         <div className="container">
-          <div className="row justify-content-center pb-5 mb-3">
-            <div className="col-md-7 heading-section text-center ">
+          <div className="pb-5 mb-3 row justify-content-center">
+            <div className="text-center col-md-7 heading-section ">
               <span className="subheading">Our Causes</span>
               <h2>Donate to charity causes around the world</h2>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6 col-lg-3">
-              <div className="causes causes-2 text-center ">
+              <div className="text-center causes causes-2 ">
                 <a
                   href=""
                   className="img w-100"
@@ -64,7 +64,7 @@ const MainService = () => {
                     backgroundImage: `url(  ${causes1})`,
                   }}
                 ></a>
-                <div className="text p-3">
+                <div className="p-3 text">
                   <h2>
                     <a href="">Save the poor children from hunger</a>
                   </h2>
@@ -72,7 +72,7 @@ const MainService = () => {
                     Far far away, behind the word mountains, far from the
                     countries Vokalia
                   </p>
-                  <div className="goal mb-4">
+                  <div className="mb-4 goal">
                     <p>
                       <span>$3,800</span> to go
                     </p>
@@ -94,7 +94,7 @@ const MainService = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="causes causes-2 text-center ">
+              <div className="text-center causes causes-2 ">
                 <a
                   href=""
                   className="img w-100"
@@ -102,7 +102,7 @@ const MainService = () => {
                     backgroundImage: `url(  ${causes2})`,
                   }}
                 ></a>
-                <div className="text p-3">
+                <div className="p-3 text">
                   <h2>
                     <a href="">Save the poor children from hunger</a>
                   </h2>
@@ -110,7 +110,7 @@ const MainService = () => {
                     Far far away, behind the word mountains, far from the
                     countries Vokalia
                   </p>
-                  <div className="goal mb-4">
+                  <div className="mb-4 goal">
                     <p>
                       <span>$3,800</span> to go
                     </p>
@@ -132,7 +132,7 @@ const MainService = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="causes causes-2 text-center ">
+              <div className="text-center causes causes-2 ">
                 <a
                   href=""
                   className="img w-100"
@@ -140,7 +140,7 @@ const MainService = () => {
                     backgroundImage: `url(  ${causes3})`,
                   }}
                 ></a>
-                <div className="text p-3">
+                <div className="p-3 text">
                   <h2>
                     <a href="">Save the poor children from hunger</a>
                   </h2>
@@ -148,7 +148,7 @@ const MainService = () => {
                     Far far away, behind the word mountains, far from the
                     countries Vokalia
                   </p>
-                  <div className="goal mb-4">
+                  <div className="mb-4 goal">
                     <p>
                       <span>$3,800</span> to go
                     </p>
@@ -170,7 +170,7 @@ const MainService = () => {
               </div>
             </div>
             <div className="col-md-6 col-lg-3">
-              <div className="causes causes-2 text-center ">
+              <div className="text-center causes causes-2 ">
                 <a
                   href=""
                   className="img w-100"
@@ -178,7 +178,7 @@ const MainService = () => {
                     backgroundImage: `url(  ${causes4})`,
                   }}
                 ></a>
-                <div className="text p-3">
+                <div className="p-3 text">
                   <h2>
                     <a href="">Save the poor children from hunger</a>
                   </h2>
@@ -186,7 +186,7 @@ const MainService = () => {
                     Far far away, behind the word mountains, far from the
                     countries Vokalia
                   </p>
-                  <div className="goal mb-4">
+                  <div className="mb-4 goal">
                     <p>
                       <span>$3,800</span> to go
                     </p>
@@ -215,7 +215,7 @@ const MainService = () => {
       <section className="ftco-counter" id="section-counter">
         <div className="container">
           <div className="row">
-            <div className="col-md-3 mb-5 mb-md-0 text-center text-md-left">
+            <div className="mb-5 text-center col-md-3 mb-md-0 text-md-left">
               <h2
                 className="font-weight-bold"
                 style={{ color: "#fff", fontSize: "22px" }}
@@ -229,7 +229,7 @@ const MainService = () => {
             <div className="col-md-9">
               <div className="row">
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="88984">
                         0
@@ -241,7 +241,7 @@ const MainService = () => {
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="65000">
                         0
@@ -253,7 +253,7 @@ const MainService = () => {
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="77000">
                         0
@@ -265,7 +265,7 @@ const MainService = () => {
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="50">
                         0
@@ -285,15 +285,18 @@ const MainService = () => {
       <section className="ftco-section testimony-section">
         <div className="overlay"></div>
         <div className="container">
-          <div className="row justify-content-center pb-5">
-            <div className="col-md-7 heading-section heading-section-white text-center ">
+          <div className="pb-5 row justify-content-center">
+            <div className="text-center col-md-7 heading-section heading-section-white ">
               <span className="subheading">Testimony</span>
               <h2>Happy Clients &amp; Feedbacks</h2>
             </div>
           </div>
           <div className="row ">
             <div className="col-md-12">
-              <div className="carousel-testimony owl-carousel">
+              <div
+                style={{ display: "block" }}
+                className="carousel-testimony owl-carousel"
+              >
                 <Carousel autoplay>
                   <div>
                     <div className="item">
@@ -304,7 +307,7 @@ const MainService = () => {
                             backgroundImage: `url(  ${person1})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -334,7 +337,7 @@ const MainService = () => {
                             backgroundImage: `url(  ${person2})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -364,7 +367,7 @@ const MainService = () => {
                             backgroundImage: `url(  ${person3})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -394,7 +397,7 @@ const MainService = () => {
                             backgroundImage: `url(  ${person4})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -424,7 +427,7 @@ const MainService = () => {
                             backgroundImage: `url(  ${person1})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -454,8 +457,8 @@ const MainService = () => {
 
       <section className="ftco-section">
         <div className="container">
-          <div className="row justify-content-center pb-5 mb-3">
-            <div className="col-md-7 heading-section text-center ">
+          <div className="pb-5 mb-3 row justify-content-center">
+            <div className="text-center col-md-7 heading-section ">
               <span className="subheading">Our Blog</span>
               <h2>Latest news from our blog</h2>
             </div>
@@ -470,8 +473,8 @@ const MainService = () => {
                     backgroundImage: `url(  ${image1})`,
                   }}
                 ></a>
-                <div className="text p-4">
-                  <div className="meta mb-2">
+                <div className="p-4 text">
+                  <div className="mb-2 meta">
                     <div>
                       <a href="#">July 20, 2020</a>
                     </div>
@@ -508,8 +511,8 @@ const MainService = () => {
                     backgroundImage: `url(  ${image2})`,
                   }}
                 ></a>
-                <div className="text p-4">
-                  <div className="meta mb-2">
+                <div className="p-4 text">
+                  <div className="mb-2 meta">
                     <div>
                       <a href="#">July 20, 2020</a>
                     </div>
@@ -546,8 +549,8 @@ const MainService = () => {
                     backgroundImage: `url(  ${image3})`,
                   }}
                 ></a>
-                <div className="text p-4">
-                  <div className="meta mb-2">
+                <div className="p-4 text">
+                  <div className="mb-2 meta">
                     <div>
                       <a href="#">July 20, 2020</a>
                     </div>
@@ -584,8 +587,8 @@ const MainService = () => {
                     backgroundImage: `url(  ${image4})`,
                   }}
                 ></a>
-                <div className="text p-4">
-                  <div className="meta mb-2">
+                <div className="p-4 text">
+                  <div className="mb-2 meta">
                     <div>
                       <a href="#">July 20, 2020</a>
                     </div>
@@ -619,8 +622,8 @@ const MainService = () => {
 
       <section className="ftco-section ftco-no-pt">
         <div className="container">
-          <div className="row justify-content-center pb-5 mb-3">
-            <div className="col-md-7 heading-section text-center ">
+          <div className="pb-5 mb-3 row justify-content-center">
+            <div className="text-center col-md-7 heading-section ">
               <span className="subheading">Volunteer</span>
               <h2>Our Expert Volunteer</h2>
             </div>
@@ -696,7 +699,7 @@ const MainService = () => {
             </div>
             <div className="col-md-4 col-lg-4 d-flex align-items-center justify-content-end">
               <p className="mb-0">
-                <a href="#" className="btn btn-primary py-3 px-4">
+                <a href="#" className="px-4 py-3 btn btn-primary">
                   Become A Volunteer
                 </a>
               </p>

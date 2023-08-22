@@ -25,12 +25,14 @@ const LandingPage = () => {
   const { register, handleSubmit, control } = useForm();
   const onSubmit = (data: any) => console.log(data);
 
-
   return (
     <>
       {/* carousel */}
       <section className="hero-wrap js-fullheight">
-        <div className="home-slider js-fullheight owl-carousel">
+        <div
+          style={{ display: "block" }}
+          className="home-slider js-fullheight owl-carousel"
+        >
           <Carousel effect="fade" autoplay>
             <div>
               <div
@@ -56,7 +58,7 @@ const LandingPage = () => {
                             <p className="mb-0">
                               <a
                                 href=""
-                                className="btn btn-secondary py-3 px-2 px-md-4"
+                                className="px-2 py-3 btn btn-secondary px-md-4"
                               >
                                 Become A Volunteer
                               </a>
@@ -95,7 +97,7 @@ const LandingPage = () => {
                             <p className="mb-0">
                               <a
                                 href=""
-                                className="btn btn-secondary py-3 px-2 px-md-4"
+                                className="px-2 py-3 btn btn-secondary px-md-4"
                               >
                                 Become A Volunteer
                               </a>
@@ -133,7 +135,7 @@ const LandingPage = () => {
                             <p className="mb-0">
                               <a
                                 href=""
-                                className="btn btn-secondary py-3 px-2 px-md-4"
+                                className="px-2 py-3 btn btn-secondary px-md-4"
                               >
                                 Become A Volunteer
                               </a>
@@ -250,7 +252,6 @@ const LandingPage = () => {
                       <div className="form-group">
                         <label htmlFor="name">Payment Method</label>
                         <div className="d-lg-flex">
-
                           <Controller
                             control={control}
                             render={({ field: { onChange, value } }) => (
@@ -287,7 +288,7 @@ const LandingPage = () => {
                         <input
                           type="submit"
                           value="Donate Now"
-                          className="btn btn-secondary py-3 px-4"
+                          className="px-4 py-3 btn btn-secondary"
                         />
                       </div>
                     </div>
@@ -295,7 +296,7 @@ const LandingPage = () => {
                 </form>
               </div>
             </div>
-            <div className="col-md-7 wrap-about py-5">
+            <div className="py-5 col-md-7 wrap-about">
               <div className="heading-section pr-md-5 pt-md-5">
                 <span className="subheading">Welcome to unicare</span>
                 <h2 className="mb-4">We are here to help everyone in need</h2>
@@ -363,7 +364,7 @@ const LandingPage = () => {
           <div className="row no-gutters">
             <div className="col-md-3 d-flex align-items-stretch">
               <div className="services">
-                <div className="text text-center bg-secondary">
+                <div className="text-center text bg-secondary">
                   <h3>
                     Become a <br />
                     Volunteer
@@ -374,7 +375,7 @@ const LandingPage = () => {
                   </p>
                 </div>
                 <div
-                  className="img border-2"
+                  className="border-2 img"
                   style={{
                     backgroundImage: `url(  ${volunteer1})`,
                   }}
@@ -387,7 +388,7 @@ const LandingPage = () => {
             </div>
             <div className="col-md-3 d-flex align-items-stretch">
               <div className="services">
-                <div className="text text-center bg-tertiary">
+                <div className="text-center text bg-tertiary">
                   <h3>
                     Quick <br />
                     Fundraising
@@ -411,7 +412,7 @@ const LandingPage = () => {
             </div>
             <div className="col-md-3 d-flex align-items-stretch">
               <div className="services">
-                <div className="text text-center bg-primary">
+                <div className="text-center text bg-primary">
                   <h3>
                     Start <br />
                     Donating
@@ -435,7 +436,7 @@ const LandingPage = () => {
             </div>
             <div className="col-md-3 d-flex align-items-stretch">
               <div className="services">
-                <div className="text text-center bg-quarternary">
+                <div className="text-center text bg-quarternary">
                   <h3>
                     Get <br />
                     Involved
@@ -446,7 +447,7 @@ const LandingPage = () => {
                   </p>
                 </div>
                 <div
-                  className="img border-4"
+                  className="border-4 img"
                   style={{
                     backgroundImage: `url(  ${volunteer4})`,
                   }}

@@ -7,4 +7,5 @@ export const paths = {
   donation: "/donation",
   ourpartner: "/ourpartner",
   helpcentre: "/helpcentre",
+  login: '/login'
 };

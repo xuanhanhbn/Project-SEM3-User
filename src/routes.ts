@@ -36,6 +36,10 @@ const routes = [
         path: paths.helpcentre,
         component: lazy(() => import("pages/helpcentre/HelpCentrePage")),
       },
+      {
+        path: paths.login,
+        component: lazy(() => import("pages/login/LoginPage")),
+      },
     ],
   },
 ];
