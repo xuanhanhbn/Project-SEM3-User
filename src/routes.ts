@@ -36,6 +36,20 @@ const routes = [
         path: paths.helpcentre,
         component: lazy(() => import("pages/helpcentre/HelpCentrePage")),
       },
+      {
+        path: paths.causedetails,
+        component: lazy(
+          () => import("pages/home/components/causedetails/CauseDetailsPage")
+        ),
+      },
+      {
+        path: paths.blogdetails,
+        component: lazy(() => import("pages/blog/blogdetails/BlogDetailsPage")),
+      },
+      {
+        path: paths.login,
+        component: lazy(() => import("pages/login/LoginPage")),
+      },
     ],
   },
 ];

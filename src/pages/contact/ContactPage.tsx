@@ -1,8 +1,17 @@
 import React from "react";
 import bg2 from "assets/images/carousel/bg_2.jpg";
 import about from "assets/images/background/about-3.jpg";
+import { inputContact } from "./constants";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
+import FormControl from "@mui/material/FormControl";
+
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 
 function ContactPage() {
+  const { register, handleSubmit, control } = useForm();
+  const onSubmit = (data: any) => console.log(data);
+
   return (
     <>
       <section
@@ -15,8 +24,8 @@ function ContactPage() {
         <div className="overlay"></div>
         <div className="container">
           <div className="row no-gutters slider-text align-items-end">
-            <div className="col-md-9  pb-5">
-              <p className="breadcrumbs mb-2">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
                 <span className="mr-2">
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
@@ -37,9 +46,9 @@ function ContactPage() {
           <div className="row justify-content-center">
             <div className="col-md-12">
               <div className="wrapper">
-                <div className="row mb-5">
+                <div className="mb-5 row">
                   <div className="col-md-3">
-                    <div className="dbox w-100 text-center">
+                    <div className="text-center dbox w-100">
                       <div className="icon bg-primary d-flex align-items-center justify-content-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +69,7 @@ function ContactPage() {
                     </div>
                   </div>
                   <div className="col-md-3">
-                    <div className="dbox w-100 text-center">
+                    <div className="text-center dbox w-100">
                       <div className="icon bg-secondary d-flex align-items-center justify-content-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +90,7 @@ function ContactPage() {
                     </div>
                   </div>
                   <div className="col-md-3">
-                    <div className="dbox w-100 text-center">
+                    <div className="text-center dbox w-100">
                       <div className="icon bg-tertiary d-flex align-items-center justify-content-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +113,7 @@ function ContactPage() {
                     </div>
                   </div>
                   <div className="col-md-3">
-                    <div className="dbox w-100 text-center">
+                    <div className="text-center dbox w-100">
                       <div className="icon bg-quarternary d-flex align-items-center justify-content-center">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -126,62 +135,73 @@ function ContactPage() {
                 </div>
                 <div className="row no-gutters">
                   <div className="col-md-7">
-                    <div className="contact-wrap w-100 p-md-5 p-4">
+                    <div className="p-4 contact-wrap w-100 p-md-5">
                       <h3 className="mb-4">Contact Us</h3>
                       <form
-                        method="POST"
+                        onSubmit={handleSubmit(onSubmit)}
                         id="contactForm"
                         name="contactForm"
                         className="contactForm"
                       >
                         <div className="row">
-                          <div className="col-md-6">
-                            <div className="form-group">
-                              <label className="label">Full Name</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                name="name"
-                                id="name"
-                                placeholder="Name"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-md-6">
-                            <div className="form-group">
-                              <label className="label">Email Address</label>
-                              <input
-                                type="email"
-                                className="form-control"
-                                name="email"
-                                id="email"
-                                placeholder="Email"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-md-12">
-                            <div className="form-group">
-                              <label className="label">Subject</label>
-                              <input
-                                type="text"
-                                className="form-control"
-                                name="subject"
-                                id="subject"
-                                placeholder="Subject"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-md-12">
-                            <div className="form-group">
-                              <label className="label">Message</label>
-                              <textarea
-                                name="message"
-                                className="form-control"
-                                id="message"
-                                placeholder="Message"
-                              ></textarea>
-                            </div>
-                          </div>
+                          {inputContact.map((input) => {
+                            if (
+                              input.field == "fullName" ||
+                              input.field == "email"
+                            ) {
+                              return (
+                                <Controller
+                                  key={input.field}
+                                  control={control}
+                                  render={({ field: { onChange, value } }) => {
+                                    return (
+                                      <div className="col-md-6">
+                                        <div className="form-group">
+                                          <label className="label">
+                                            {input.value}
+                                          </label>
+                                          <input
+                                            onChange={onChange}
+                                            value={value}
+                                            className="form-control"
+                                            name={input.field}
+                                            placeholder={input.value}
+                                          />
+                                        </div>
+                                      </div>
+                                    );
+                                  }}
+                                  name={input.field}
+                                />
+                              );
+                            } else {
+                              return (
+                                <Controller
+                                  key={input.field}
+                                  control={control}
+                                  render={({ field: { onChange, value } }) => {
+                                    return (
+                                      <div className="col-md-12">
+                                        <div className="form-group">
+                                          <label className="label">
+                                            {input.value}
+                                          </label>
+                                          <input
+                                            onChange={onChange}
+                                            value={value}
+                                            className="form-control"
+                                            name={input.field}
+                                            placeholder={input.value}
+                                          />
+                                        </div>
+                                      </div>
+                                    );
+                                  }}
+                                  name={input.field}
+                                />
+                              );
+                            }
+                          })}
                           <div className="col-md-12">
                             <div className="form-group">
                               <input
@@ -198,7 +218,7 @@ function ContactPage() {
                   </div>
                   <div className="col-md-5 d-flex align-items-stretch">
                     <div
-                      className="info-wrap w-100 p-5 img"
+                      className="p-5 info-wrap w-100 img"
                       style={{
                         backgroundImage: `url(  ${about})`,
                       }}

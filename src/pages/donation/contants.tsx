@@ -60,7 +60,7 @@ export const inputHomeDonate = [
       </svg>
     ),
   },
-  {},
+  
 ];
 
 export const listCauses = [
