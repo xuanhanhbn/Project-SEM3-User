@@ -184,7 +184,6 @@ const HelpCentrePage = () => {
                         name="contactForm"
                         className="contactForm"
                         onSubmit={handleSubmit(onSubmit)}
-
                       >
                         <div className="row">
                           {inputContact.map((input) => {
@@ -204,6 +203,8 @@ const HelpCentrePage = () => {
                                             {input.value}
                                           </label>
                                           <input
+                                            onChange={onChange}
+                                            value={value}
                                             className="form-control"
                                             name={input.field}
                                             placeholder={input.value}
@@ -228,6 +229,8 @@ const HelpCentrePage = () => {
                                             {input.value}
                                           </label>
                                           <input
+                                            onChange={onChange}
+                                            value={value}
                                             className="form-control"
                                             name={input.field}
                                             placeholder={input.value}

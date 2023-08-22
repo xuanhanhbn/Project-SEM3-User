@@ -161,6 +161,8 @@ function ContactPage() {
                                             {input.value}
                                           </label>
                                           <input
+                                            onChange={onChange}
+                                            value={value}
                                             className="form-control"
                                             name={input.field}
                                             placeholder={input.value}
@@ -185,6 +187,8 @@ function ContactPage() {
                                             {input.value}
                                           </label>
                                           <input
+                                            onChange={onChange}
+                                            value={value}
                                             className="form-control"
                                             name={input.field}
                                             placeholder={input.value}
