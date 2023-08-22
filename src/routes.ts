@@ -46,6 +46,10 @@ const routes = [
         path: paths.blogdetails,
         component: lazy(() => import("pages/blog/blogdetails/BlogDetailsPage")),
       },
+      {
+        path: paths.login,
+        component: lazy(() => import("pages/login/LoginPage")),
+      },
     ],
   },
 ];

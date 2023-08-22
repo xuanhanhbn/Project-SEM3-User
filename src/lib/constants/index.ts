@@ -8,5 +8,6 @@ export const paths = {
   ourpartner: "/ourpartner",
   helpcentre: "/helpcentre",
   causedetails: "/causedetails",
-  blogdetails: '/blogdetails'
+  blogdetails: "/blogdetails",
+  login: "/login",
 };
