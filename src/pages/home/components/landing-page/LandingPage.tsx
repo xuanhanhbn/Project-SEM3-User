@@ -12,7 +12,7 @@ import treatment from "assets/images/home/treatment.png";
 import CustomButton from "components/CustomButton";
 import { Carousel } from "antd";
 
-import { inputHomeDonate, listCauses, radioPayload } from "./contants";
+import { inputHomeDonate, listCauses, radioPayload, typeInputDonate } from "./contants";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -24,6 +24,80 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 const LandingPage = () => {
   const { register, handleSubmit, control } = useForm();
   const onSubmit = (data: any) => console.log(data);
+
+  const renderInput = (input:typeInputDonate) => {
+    if (input.type == "INPUT") {
+      return (
+        <Controller
+          key={input.field}
+          control={control}
+          render={({ field: { onChange, value } }) => {
+            return (
+              <div className="col-md-12">
+                <div className="form-group">
+                  <label htmlFor="name">
+                    {input.placeHolder}
+                  </label>
+                  <div className="input-wrap">
+                    {/* <div className="icon">{input.icon}</div> */}
+                    <input
+                      type="text"
+                      className="form-control"
+                      name={input.field}
+                      onChange={onChange}
+                      value={value}
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          }}
+          name={input.field}
+        />
+      );
+    }
+
+    // if (input.type == "SELECT") {
+    //   return (
+    //     <Controller
+    //       key={input.field}
+    //       control={control}
+    //       render={({ field: { onChange, value } }) => {
+    //         return (
+    //           <div className="col-md-12">
+    //             <div className="form-group">
+    //               <label htmlFor="name">Select Causes</label>
+    //               <div className="form-field">
+    //                 <div className="select-wrap">
+    //                   <div className="icon">{input.icon}</div>
+    //                   <select
+    //                     name={input.field}
+    //                     onChange={onChange}
+    //                     value={value}
+    //                     className="form-control"
+    //                   >
+    //                     {listCauses.map((list) => {
+    //                       return (
+    //                         <option
+    //                           key={list.field}
+    //                           value={list.field}
+    //                         >
+    //                           {list.value}
+    //                         </option>
+    //                       );
+    //                     })}
+    //                   </select>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         );
+    //       }}
+    //       name={input.field}
+    //     />
+    //   );
+    // }
+  }
 
   return (
     <>
@@ -174,79 +248,11 @@ const LandingPage = () => {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="appointment">
                   <div className="row">
-                    {inputHomeDonate.map((input) => {
-                      if (input.type == "INPUT") {
-                        return (
-                          <Controller
-                            key={input.field}
-                            control={control}
-                            render={({ field: { onChange, value } }) => {
-                              return (
-                                <div className="col-md-12">
-                                  <div className="form-group">
-                                    <label htmlFor="name">
-                                      {input.placeHolder}
-                                    </label>
-                                    <div className="input-wrap">
-                                      <div className="icon">{input.icon}</div>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        name={input.field}
-                                        onChange={onChange}
-                                        value={value}
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            }}
-                            name={input.field}
-                          />
-                        );
-                      }
-
-                      if (input.type == "SELECT") {
-                        return (
-                          <Controller
-                            key={input.field}
-                            control={control}
-                            render={({ field: { onChange, value } }) => {
-                              return (
-                                <div className="col-md-12">
-                                  <div className="form-group">
-                                    <label htmlFor="name">Select Causes</label>
-                                    <div className="form-field">
-                                      <div className="select-wrap">
-                                        <div className="icon">{input.icon}</div>
-                                        <select
-                                          name={input.field}
-                                          onChange={onChange}
-                                          value={value}
-                                          className="form-control"
-                                        >
-                                          {listCauses.map((list) => {
-                                            return (
-                                              <option
-                                                key={list.field}
-                                                value={list.field}
-                                              >
-                                                {list.value}
-                                              </option>
-                                            );
-                                          })}
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            }}
-                            name={input.field}
-                          />
-                        );
-                      }
-                    })}
+                    {inputHomeDonate.map((input) => (
+                      <div key={input.field}>
+                        {renderInput(input)}
+                      </div>
+                    ))}
 
                     <div className="col-md-12">
                       <div className="form-group">
