@@ -27,8 +27,8 @@ function DonationPage() {
         <div className="overlay"></div>
         <div className="container">
           <div className="row no-gutters slider-text align-items-end">
-            <div className="col-md-9  pb-5">
-              <p className="breadcrumbs mb-2">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
                 <span className="mr-2">
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
@@ -67,9 +67,9 @@ function DonationPage() {
                   </div>
                 </div>
 
-                <div className="row no-gutters mt-4">
+                <div className="mt-4 row no-gutters">
                   <div className="col-md-7">
-                    <div className="contact-wrap w-100 p-md-5 p-4">
+                    <div className="p-4 contact-wrap w-100 p-md-5">
                       <h3 className="mb-4">Donator Details</h3>
                       <form
                         onSubmit={handleSubmit(onSubmit)}
@@ -175,6 +175,7 @@ function DonationPage() {
                                           {radioPayload.map((radio) => {
                                             return (
                                               <FormControlLabel
+                                                key={radio.field}
                                                 value={radio.field}
                                                 label={radio.value}
                                                 control={<Radio />}
@@ -196,7 +197,7 @@ function DonationPage() {
                               <input
                                 type="submit"
                                 value="Donate Now"
-                                className="btn btn-secondary py-3 px-4"
+                                className="px-4 py-3 btn btn-secondary"
                               />
                             </div>
                           </div>
@@ -206,7 +207,7 @@ function DonationPage() {
                   </div>
                   <div className="col-md-5 d-flex align-items-stretch">
                     <div
-                      className="info-wrap w-100 p-5 img"
+                      className="p-5 info-wrap w-100 img"
                       style={{
                         backgroundImage: `url(  ${about})`,
                       }}

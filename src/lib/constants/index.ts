@@ -7,4 +7,6 @@ export const paths = {
   donation: "/donation",
   ourpartner: "/ourpartner",
   helpcentre: "/helpcentre",
+  causedetails: "/causedetails",
+  blogdetails: '/blogdetails'
 };

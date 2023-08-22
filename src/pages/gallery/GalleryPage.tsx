@@ -42,13 +42,13 @@ function GalleryPage() {
         <div className="overlay"></div>
         <div className="container">
           <div className="row no-gutters slider-text align-items-end">
-            <div className="col-md-9  pb-5">
-              <p className="breadcrumbs mb-2">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
                 <span className="mr-2">
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
                   </a>
-                </span>{" "}
+                </span>
                 <span>
                   Gallery <i className="ion-ios-arrow-forward"></i>
                 </span>
@@ -74,21 +74,20 @@ function GalleryPage() {
                   lg: 32,
                 }}
               ></Row>
-              {imageItems.map((img) => {
+              {imageItems.map((img, index) => {
                 return (
-                  <>
-                    <Col
-                      style={{
-                        marginBottom: 32,
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                      className="gutter-row"
-                      span={6}
-                    >
-                      <Image key={img} width={200} src={img} />
-                    </Col>
-                  </>
+                  <Col
+                    style={{
+                      marginBottom: 32,
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                    className="gutter-row"
+                    span={6}
+                    key={index}
+                  >
+                    <Image width={200} src={img} />
+                  </Col>
                 );
               })}
             </Image.PreviewGroup>
