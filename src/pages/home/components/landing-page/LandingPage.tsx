@@ -1,4 +1,3 @@
-import { Box, Typography } from "@mui/material";
 import "./landing-page.css";
 import backgroundSideLarge from "assets/images/home/slide-background1-large.png";
 import background1 from "assets/images/carousel/bg_1.jpg";
@@ -10,22 +9,47 @@ import volunteer3 from "assets/images/volunteer/services-3.jpg";
 import volunteer4 from "assets/images/volunteer/services-4.jpg";
 import treatment from "assets/images/home/treatment.png";
 import CustomButton from "components/CustomButton";
-import { Carousel } from "antd";
+import { Carousel, Input } from "antd";
+import Typography from "@mui/material/Typography";
 
-import { inputHomeDonate, listCauses, radioPayload, typeInputDonate } from "./contants";
+import {
+  inputHomeDonate,
+  listCauses,
+  radioPayload,
+  typeInputDonate,
+} from "./contants";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 import FormControl from "@mui/material/FormControl";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 
+const validationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Full Name is required"),
+  email: Yup.string().required("Email is required").email("Email is invalid."),
+  // password: Yup.string().required('Password is required'),
+  // roles: Yup.string().required('Roles is required'),
+});
+
 const LandingPage = () => {
-  const { register, handleSubmit, control } = useForm();
+  
+  // Thêm yup vào useform sẽ lỗi type 
+  
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
   const onSubmit = (data: any) => console.log(data);
 
-  const renderInput = (input:typeInputDonate) => {
+  const renderInput = (input: typeInputDonate) => {
     if (input.type == "INPUT") {
       return (
         <Controller
@@ -35,12 +59,10 @@ const LandingPage = () => {
             return (
               <div className="col-md-12">
                 <div className="form-group">
-                  <label htmlFor="name">
-                    {input.placeHolder}
-                  </label>
+                  <label htmlFor="name">{input.placeHolder}</label>
                   <div className="input-wrap">
                     {/* <div className="icon">{input.icon}</div> */}
-                    <input
+                    <Input
                       type="text"
                       className="form-control"
                       name={input.field}
@@ -97,7 +119,7 @@ const LandingPage = () => {
     //     />
     //   );
     // }
-  }
+  };
 
   return (
     <>
@@ -249,9 +271,7 @@ const LandingPage = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="appointment">
                   <div className="row">
                     {inputHomeDonate.map((input) => (
-                      <div key={input.field}>
-                        {renderInput(input)}
-                      </div>
+                      <div key={input.field}>{renderInput(input)}</div>
                     ))}
 
                     <div className="col-md-12">
