@@ -43,7 +43,10 @@ const HelpCentrePage = () => {
         </div>
       </section>
 
-      <section className="ftco-section" style={{ paddingBottom: 20 }}>
+      <section
+        className="ftco-section"
+        style={{ paddingBottom: 20, paddingTop: 120 }}
+      >
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-12">
@@ -104,7 +107,7 @@ const HelpCentrePage = () => {
         style={{
           paddingTop: 20,
           backgroundColor: "#faf8f2",
-          paddingBottom: 20,
+          paddingBottom: 120,
         }}
       >
         <div className="container">
@@ -153,109 +156,6 @@ const HelpCentrePage = () => {
                           </div>
                         </details>
                       </>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="ftco-section"
-        style={{
-          paddingTop: 20,
-        }}
-      >
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-md-12">
-              <div className="wrapper">
-                <div className="row no-gutters">
-                  <div>
-                    <div
-                      style={{ width: "100%" }}
-                      className="p-4 contact-wrap w-100 p-md-5"
-                    >
-                      <h3 className="mb-4">Contact Us</h3>
-                      <form
-                        id="contactForm"
-                        name="contactForm"
-                        className="contactForm"
-                        onSubmit={handleSubmit(onSubmit)}
-                      >
-                        <div className="row">
-                          {inputContact.map((input) => {
-                            if (
-                              input.field == "fullName" ||
-                              input.field == "email"
-                            ) {
-                              return (
-                                <Controller
-                                  key={input.field}
-                                  control={control}
-                                  render={({ field: { onChange, value } }) => {
-                                    return (
-                                      <div className="col-md-6">
-                                        <div className="form-group">
-                                          <label className="label">
-                                            {input.value}
-                                          </label>
-                                          <input
-                                            onChange={onChange}
-                                            value={value}
-                                            className="form-control"
-                                            name={input.field}
-                                            placeholder={input.value}
-                                          />
-                                        </div>
-                                      </div>
-                                    );
-                                  }}
-                                  name={input.field}
-                                />
-                              );
-                            } else {
-                              return (
-                                <Controller
-                                  key={input.field}
-                                  control={control}
-                                  render={({ field: { onChange, value } }) => {
-                                    return (
-                                      <div className="col-md-12">
-                                        <div className="form-group">
-                                          <label className="label">
-                                            {input.value}
-                                          </label>
-                                          <input
-                                            onChange={onChange}
-                                            value={value}
-                                            className="form-control"
-                                            name={input.field}
-                                            placeholder={input.value}
-                                          />
-                                        </div>
-                                      </div>
-                                    );
-                                  }}
-                                  name={input.field}
-                                />
-                              );
-                            }
-                          })}
-                          <div className="col-md-12">
-                            <div className="form-group">
-                              <input
-                                type="submit"
-                                value="Send Message"
-                                className="btn btn-primary"
-                              />
-                              <div className="submitting"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
                     </div>
                   </div>
                 </div>
