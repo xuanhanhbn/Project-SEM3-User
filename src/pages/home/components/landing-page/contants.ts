@@ -1,7 +1,9 @@
+import * as Yup from "yup";
+
 export const inputHomeDonate = [
   {
-    placeHolder: "Full Name",
     field: "fullName",
+    placeHolder: "Full Name",
     type: "INPUT",
     // icon: (
     //   <svg
@@ -15,8 +17,8 @@ export const inputHomeDonate = [
     // ),
   },
   {
-    placeHolder: "Email Address",
     field: "email",
+    placeHolder: "Email Address",
     type: "INPUT",
     // icon: (
     //   <svg
@@ -31,8 +33,8 @@ export const inputHomeDonate = [
   },
 
   {
-    placeHolder: "Select Causes",
     field: "selectCauses",
+    placeHolder: "Select Causes",
     type: "SELECT",
     // icon: (
     //   <svg
@@ -46,8 +48,8 @@ export const inputHomeDonate = [
     // ),
   },
   {
-    placeHolder: "Amount",
     field: "amount",
+    placeHolder: "Amount",
     type: "INPUT",
     // icon: (
     //   <svg
@@ -62,11 +64,28 @@ export const inputHomeDonate = [
   },
 ];
 
+export const validationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Full Name is required"),
+  email: Yup.string().required("Email is required").email("Email is invalid."),
+  selectCauses: Yup.string().required("selectCauses is required"),
+  amount: Yup.string().required("Full Name is required"),
+
+});
+
+
 export type typeInputDonate = {
-  placeHolder: string,
   field: string,
-  type: string,
+  placeHolder: string,
+  type:string,
 }
+
+export type DataRequestInput = {
+  fullName: string;
+  email: string;
+  amount:string
+  selectCauses: string;
+};
+
 
 export const listCauses = [
   {

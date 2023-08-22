@@ -7,118 +7,116 @@ import volunteer1 from "assets/images/volunteer/services-1.jpg";
 import volunteer2 from "assets/images/volunteer/services-2.jpg";
 import volunteer3 from "assets/images/volunteer/services-3.jpg";
 import volunteer4 from "assets/images/volunteer/services-4.jpg";
-import treatment from "assets/images/home/treatment.png";
-import CustomButton from "components/CustomButton";
 import { Carousel, Input } from "antd";
-import Typography from "@mui/material/Typography";
 
 import {
+  DataRequestInput,
   inputHomeDonate,
   listCauses,
   radioPayload,
   typeInputDonate,
+  validationSchema,
 } from "./contants";
-import RadioGroup from "@mui/material/RadioGroup";
-import Radio from "@mui/material/Radio";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
-import FormControl from "@mui/material/FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
 
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
-
-const validationSchema = Yup.object().shape({
-  fullName: Yup.string().required("Full Name is required"),
-  email: Yup.string().required("Email is required").email("Email is invalid."),
-  // password: Yup.string().required('Password is required'),
-  // roles: Yup.string().required('Roles is required'),
-});
+import { useForm, Controller } from "react-hook-form";
 
 const LandingPage = () => {
-  
-  // Thêm yup vào useform sẽ lỗi type 
-  
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({
+  } = useForm<DataRequestInput>({
+    mode: "all",
+    criteriaMode: "all",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      selectCauses: "",
+      amount: "",
+    },
     resolver: yupResolver(validationSchema),
   });
+  console.log("errors: ", errors);
+
   const onSubmit = (data: any) => console.log(data);
 
-  const renderInput = (input: typeInputDonate) => {
-    if (input.type == "INPUT") {
+  const renderInput = (item: typeInputDonate) => {
+    if (item.field === "selectCauses") {
       return (
         <Controller
-          key={input.field}
+          name="selectCauses"
           control={control}
           render={({ field: { onChange, value } }) => {
             return (
               <div className="col-md-12">
                 <div className="form-group">
-                  <label htmlFor="name">{input.placeHolder}</label>
-                  <div className="input-wrap">
-                    {/* <div className="icon">{input.icon}</div> */}
-                    <Input
-                      type="text"
-                      className="form-control"
-                      name={input.field}
-                      onChange={onChange}
-                      value={value}
-                    />
+                  <label htmlFor="name">Select Causes</label>
+                  <div className="form-field">
+                    <div className="select-wrap">
+                      {/* <div className="icon">{item.icon}</div> */}
+                      <select
+                        name={item.field}
+                        onChange={onChange}
+                        value={value}
+                        className="form-control"
+                      >
+                        {listCauses.map((list) => {
+                          return (
+                            <option key={list.field} value={list.field}>
+                              {list.value}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    {errors.selectCauses && (
+                  <p className="text-red-600 text-sm">{errors.selectCauses.message}</p>
+                )}
+
                   </div>
                 </div>
               </div>
             );
           }}
-          name={input.field}
         />
       );
     }
-
-    // if (input.type == "SELECT") {
-    //   return (
-    //     <Controller
-    //       key={input.field}
-    //       control={control}
-    //       render={({ field: { onChange, value } }) => {
-    //         return (
-    //           <div className="col-md-12">
-    //             <div className="form-group">
-    //               <label htmlFor="name">Select Causes</label>
-    //               <div className="form-field">
-    //                 <div className="select-wrap">
-    //                   <div className="icon">{input.icon}</div>
-    //                   <select
-    //                     name={input.field}
-    //                     onChange={onChange}
-    //                     value={value}
-    //                     className="form-control"
-    //                   >
-    //                     {listCauses.map((list) => {
-    //                       return (
-    //                         <option
-    //                           key={list.field}
-    //                           value={list.field}
-    //                         >
-    //                           {list.value}
-    //                         </option>
-    //                       );
-    //                     })}
-    //                   </select>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         );
-    //       }}
-    //       name={input.field}
-    //     />
-    //   );
-    // }
+    if (
+      item.field === "fullName" ||
+      item.field === "email" ||
+      item.field === "amount"
+    ) {
+      return (
+        <>
+          <Controller
+            name={item.field}
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div>
+                <div className="relative">
+                  <input
+                    {...field}
+                    type="text"
+                    className="input-custom"
+                    placeholder={item.placeHolder}
+                  />
+                </div>
+                {errors &&
+                errors[item.field as keyof DataRequestInput] &&
+                errors[item.field as keyof DataRequestInput]?.message && (
+                  <p className="text-red-600 text-sm">
+                    {errors[item.field as keyof DataRequestInput]?.message}
+                  </p>
+                )}
+              </div>
+            )}
+          />
+        </>
+      );
+    }
   };
 
   return (
@@ -274,7 +272,7 @@ const LandingPage = () => {
                       <div key={input.field}>{renderInput(input)}</div>
                     ))}
 
-                    <div className="col-md-12">
+                    {/* <div className="col-md-12">
                       <div className="form-group">
                         <label htmlFor="name">Payment Method</label>
                         <div className="d-lg-flex">
@@ -308,7 +306,7 @@ const LandingPage = () => {
                           />
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="col-md-12">
                       <div className="form-group">
