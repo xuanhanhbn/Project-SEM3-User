@@ -11,11 +11,12 @@ import "assets/styles/owl.carousel.min.css";
 import "assets/styles/owl.theme.default.min.css";
 import "assets/css/index.css";
 
+import "bootstrap/dist/js/bootstrap.min.js";
 import "./i18n";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
-import {store} from "./store/store";
+import { store } from "./store/store";
 import { HelmetProvider } from "react-helmet-async";
 
 const root = ReactDOM.createRoot(

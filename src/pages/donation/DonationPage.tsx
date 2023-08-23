@@ -2,18 +2,161 @@ import React from "react";
 import bg from "assets/images/gallery/page-title-bg-1.jpg";
 import about from "assets/images/background/about-3.jpg";
 
-import { inputHomeDonate, listCauses, radioPayload } from "./contants";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { InputNumber, Space } from "antd";
 
 import FormControl from "@mui/material/FormControl";
 
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import {
+  DataRequestInput,
+  inputHomeDonate,
+  listCauses,
+  radioPayload,
+  typeInputDonate,
+  validationSchema,
+} from "./contants";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, Controller } from "react-hook-form";
 
 function DonationPage() {
-  const { register, handleSubmit, control } = useForm();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<DataRequestInput>({
+    mode: "all",
+    criteriaMode: "all",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      selectCauses: "",
+      amount: "",
+      payload: "",
+    },
+    resolver: yupResolver(validationSchema),
+  });
+
   const onSubmit = (data: any) => console.log(data);
+
+  // render input
+  const renderInput = (item: typeInputDonate) => {
+    if (item.field === "selectCauses") {
+      return (
+        <Controller
+          name="selectCauses"
+          control={control}
+          render={({ field: { onChange, value } }) => {
+            return (
+              <div className="">
+                <div className="form-group">
+                  <label htmlFor="name">Select Causes</label>
+                  <div className="form-field">
+                    <div className="select-wrap">
+                      <select
+                        name={item.field}
+                        onChange={onChange}
+                        value={value}
+                        className="form-control"
+                      >
+                        {listCauses.map((list) => {
+                          return (
+                            <option key={list.field} value={list.field}>
+                              {list.value}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+                    {errors.selectCauses && (
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors.selectCauses.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          }}
+        />
+      );
+    }
+    if (item.field === "fullName" || item.field === "email") {
+      return (
+        <>
+          <Controller
+            name={item.field}
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div className="">
+                <div className="form-group">
+                  <label htmlFor="name">{item.placeHolder}</label>
+
+                  <div className="input-wrap">
+                    <input {...field} type="text" className="form-control" />
+                  </div>
+                  {errors &&
+                    errors[item.field as keyof DataRequestInput] &&
+                    errors[item.field as keyof DataRequestInput]?.message && (
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors[item.field as keyof DataRequestInput]?.message}
+                      </p>
+                    )}
+                </div>
+              </div>
+            )}
+          />
+        </>
+      );
+    }
+
+    if (item.field === "amount") {
+      return (
+        <>
+          <Controller
+            name={item.field}
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div className="">
+                <div className="form-group">
+                  <label htmlFor="name">{item.placeHolder}</label>
+
+                  <div className="input-wrap">
+                    <InputNumber
+                      {...field}
+                      className="form-control"
+                      formatter={(value) =>
+                        `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      }
+                    />
+                  </div>
+                  {errors &&
+                    errors[item.field as keyof DataRequestInput] &&
+                    errors[item.field as keyof DataRequestInput]?.message && (
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors[item.field as keyof DataRequestInput]?.message}
+                      </p>
+                    )}
+                </div>
+              </div>
+            )}
+          />
+        </>
+      );
+    }
+  };
 
   return (
     <>
@@ -76,87 +219,11 @@ function DonationPage() {
                         className="appointment"
                       >
                         <div className="row">
-                          {inputHomeDonate.map((input) => {
-                            if (input.type == "INPUT") {
-                              return (
-                                <Controller
-                                  key={input.field}
-                                  control={control}
-                                  render={({ field: { onChange, value } }) => {
-                                    return (
-                                      <div className="col-md-12">
-                                        <div className="form-group">
-                                          <label htmlFor="name">
-                                            {input.placeHolder}
-                                          </label>
-                                          <div className="input-wrap">
-                                            <div className="icon">
-                                              {input.icon}
-                                            </div>
-                                            <input
-                                              type="text"
-                                              className="form-control"
-                                              name={input.field}
-                                              onChange={onChange}
-                                              value={value}
-                                            />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    );
-                                  }}
-                                  name={input.field}
-                                />
-                              );
-                            }
+                          {inputHomeDonate.map((input) => (
+                            <div key={input.field}>{renderInput(input)}</div>
+                          ))}
 
-                            if (input.type == "SELECT") {
-                              return (
-                                <Controller
-                                  key={input.field}
-                                  control={control}
-                                  render={({ field: { onChange, value } }) => {
-                                    return (
-                                      <div className="col-md-12">
-                                        <div className="form-group">
-                                          <label htmlFor="name">
-                                            Select Causes
-                                          </label>
-                                          <div className="form-field">
-                                            <div className="select-wrap">
-                                              <div className="icon">
-                                                {input.icon}
-                                              </div>
-                                              <select
-                                                name={input.field}
-                                                onChange={onChange}
-                                                value={value}
-                                                className="form-control"
-                                              >
-                                                {listCauses.map((list) => {
-                                                  return (
-                                                    <option
-                                                      key={list.field}
-                                                      value={list.field}
-                                                    >
-                                                      {list.value}
-                                                    </option>
-                                                  );
-                                                })}
-                                              </select>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    );
-                                  }}
-                                  name={input.field}
-                                />
-                              );
-                            }
-                          })}
-
-                          <div className="col-md-12">
+                          <div className="">
                             <div className="form-group">
                               <label htmlFor="name">Payment Method</label>
                               <div className="d-lg-flex">
@@ -189,10 +256,18 @@ function DonationPage() {
                                   name="payload"
                                 />
                               </div>
+                              {errors.payload && (
+                                <p
+                                  style={{ color: " #FFCC47" }}
+                                  className="text-sm text-red-600"
+                                >
+                                  {errors.payload.message}
+                                </p>
+                              )}
                             </div>
                           </div>
 
-                          <div className="col-md-12">
+                          <div className="">
                             <div className="form-group">
                               <input
                                 type="submit"

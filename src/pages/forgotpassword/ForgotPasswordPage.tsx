@@ -20,8 +20,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 import {
   DataRequestInput,
-  inputLogin,
-  typeInputLogin,
+  inputForgotPassword,
+  typeInputinputForgotPassword,
   validationSchema,
 } from "./constants";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -48,11 +48,16 @@ const showPass = (
   </svg>
 );
 
-const LoginPage = () => {
+const SignUpPage = () => {
   // ** State
   const [values, setValues] = useState({
     password: "",
     showPassword: false,
+  });
+
+  const [valuesConfirm, setValuesConfirm] = useState({
+    passwordConfirm: "",
+    showPasswordConfirm: false,
   });
 
   const {
@@ -69,14 +74,15 @@ const LoginPage = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  // Handle Password
-  const handleChange =
-    (prop: string) => (event: { target: { value: any } }) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
-
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
+  };
+
+  const handleClickShowConfirmPassword = () => {
+    setValuesConfirm({
+      ...valuesConfirm,
+      showPasswordConfirm: !valuesConfirm.showPasswordConfirm,
+    });
   };
 
   const handleMouseDownPassword = (event: { preventDefault: () => void }) => {
@@ -86,27 +92,32 @@ const LoginPage = () => {
   const onSubmit = (data: any) => console.log(data);
 
   // render input
-  const renderInput = (item: typeInputLogin) => {
-    if (item.field === "userName") {
+  const renderInput = (item: typeInputinputForgotPassword) => {
+    if (item.field === "userName" || item.field === "email") {
       return (
         <Controller
-          name="userName"
+          name={item.field}
           control={control}
           render={({ field: { onChange, value } }) => {
             return (
               <div style={{ marginBottom: 20 }}>
                 <TextField
                   fullWidth
-                  label="Username"
+                  label={item.placeHolder}
                   placeholder="carterLeonard"
                   onChange={onChange}
                   value={value}
                 />
-                {errors.userName && (
-                  <p style={{ color: "red" }} className="text-sm text-red-600">
-                    {errors.userName.message}
-                  </p>
-                )}
+                {errors &&
+                  errors[item.field as keyof DataRequestInput] &&
+                  errors[item.field as keyof DataRequestInput]?.message && (
+                    <p
+                      style={{ color: "red" }}
+                      className="text-sm text-red-600"
+                    >
+                      {errors[item.field as keyof DataRequestInput]?.message}
+                    </p>
+                  )}
               </div>
             );
           }}
@@ -115,7 +126,7 @@ const LoginPage = () => {
     }
     if (item.field === "password") {
       return (
-        <>
+        <div style={{ marginBottom: 20 }}>
           <Controller
             name="password"
             control={control}
@@ -159,7 +170,60 @@ const LoginPage = () => {
               );
             }}
           />
-        </>
+        </div>
+      );
+    }
+    if (item.field === "confirmPassword") {
+      return (
+        <div style={{ marginBottom: 20 }}>
+          <Controller
+            name="confirmPassword"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value } }) => {
+              return (
+                <>
+                  <FormControl fullWidth>
+                    <InputLabel htmlFor="form-layouts-alignment-password">
+                      Confirm Password
+                    </InputLabel>
+                    <OutlinedInput
+                      label="Confirm Password"
+                      value={value}
+                      onChange={onChange}
+                      id="form-layouts-alignment-password"
+                      type={
+                        valuesConfirm.showPasswordConfirm ? "text" : "password"
+                      }
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            edge="end"
+                            onClick={handleClickShowConfirmPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            aria-label="toggle password visibility"
+                          >
+                            {valuesConfirm.showPasswordConfirm
+                              ? hidePass
+                              : showPass}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                    {errors.confirmPassword && (
+                      <p
+                        style={{ color: "red" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors.confirmPassword.message}
+                      </p>
+                    )}
+                  </FormControl>
+                </>
+              );
+            }}
+          />
+        </div>
       );
     }
   };
@@ -183,11 +247,11 @@ const LoginPage = () => {
                 fontSize={24}
                 fontWeight={700}
               >
-                Sign In
+                Forgot password
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {inputLogin.map((input) => (
+              {inputForgotPassword.map((input) => (
                 <div key={input.field}>{renderInput(input)}</div>
               ))}
 
@@ -198,13 +262,13 @@ const LoginPage = () => {
                 xs={12}
               >
                 <Typography variant="h5">
-                  <Link style={{ color: "#e83e8c" }} to="/forgotpassword">
-                    Forgot password?
+                  <Link style={{ color: "#e83e8c" }} to="/signup">
+                    Sign up
                   </Link>
                 </Typography>
                 <Typography variant="h5">
-                  <Link style={{ color: "#e83e8c" }} to="/signup">
-                    Sign up
+                  <Link style={{ color: "#e83e8c" }} to="/login">
+                    Sign in
                   </Link>
                 </Typography>
               </Grid>
@@ -227,4 +291,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;

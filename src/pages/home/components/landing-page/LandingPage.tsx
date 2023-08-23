@@ -7,7 +7,12 @@ import volunteer1 from "assets/images/volunteer/services-1.jpg";
 import volunteer2 from "assets/images/volunteer/services-2.jpg";
 import volunteer3 from "assets/images/volunteer/services-3.jpg";
 import volunteer4 from "assets/images/volunteer/services-4.jpg";
-import { Carousel, Input } from "antd";
+import { Carousel, Input, InputNumber } from "antd";
+import RadioGroup from "@mui/material/RadioGroup";
+import Radio from "@mui/material/Radio";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
+import FormControl from "@mui/material/FormControl";
 
 import {
   DataRequestInput,
@@ -17,9 +22,7 @@ import {
   typeInputDonate,
   validationSchema,
 } from "./contants";
-
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import { useForm, Controller } from "react-hook-form";
 
 const LandingPage = () => {
@@ -35,13 +38,14 @@ const LandingPage = () => {
       email: "",
       selectCauses: "",
       amount: "",
+      payload: "",
     },
     resolver: yupResolver(validationSchema),
   });
-  console.log("errors: ", errors);
 
   const onSubmit = (data: any) => console.log(data);
 
+  // render input
   const renderInput = (item: typeInputDonate) => {
     if (item.field === "selectCauses") {
       return (
@@ -50,12 +54,11 @@ const LandingPage = () => {
           control={control}
           render={({ field: { onChange, value } }) => {
             return (
-              <div className="col-md-12">
+              <div className="">
                 <div className="form-group">
                   <label htmlFor="name">Select Causes</label>
                   <div className="form-field">
                     <div className="select-wrap">
-                      {/* <div className="icon">{item.icon}</div> */}
                       <select
                         name={item.field}
                         onChange={onChange}
@@ -72,9 +75,13 @@ const LandingPage = () => {
                       </select>
                     </div>
                     {errors.selectCauses && (
-                  <p className="text-red-600 text-sm">{errors.selectCauses.message}</p>
-                )}
-
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors.selectCauses.message}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -83,11 +90,7 @@ const LandingPage = () => {
         />
       );
     }
-    if (
-      item.field === "fullName" ||
-      item.field === "email" ||
-      item.field === "amount"
-    ) {
+    if (item.field === "fullName" || item.field === "email") {
       return (
         <>
           <Controller
@@ -95,22 +98,63 @@ const LandingPage = () => {
             control={control}
             defaultValue=""
             render={({ field }) => (
-              <div>
-                <div className="relative">
-                  <input
-                    {...field}
-                    type="text"
-                    className="input-custom"
-                    placeholder={item.placeHolder}
-                  />
+              <div className="">
+                <div className="form-group">
+                  <label htmlFor="name">{item.placeHolder}</label>
+
+                  <div className="input-wrap">
+                    <input {...field} type="text" className="form-control" />
+                  </div>
+                  {errors &&
+                    errors[item.field as keyof DataRequestInput] &&
+                    errors[item.field as keyof DataRequestInput]?.message && (
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors[item.field as keyof DataRequestInput]?.message}
+                      </p>
+                    )}
                 </div>
-                {errors &&
-                errors[item.field as keyof DataRequestInput] &&
-                errors[item.field as keyof DataRequestInput]?.message && (
-                  <p className="text-red-600 text-sm">
-                    {errors[item.field as keyof DataRequestInput]?.message}
-                  </p>
-                )}
+              </div>
+            )}
+          />
+        </>
+      );
+    }
+
+    if (item.field === "amount") {
+      return (
+        <>
+          <Controller
+            name={item.field}
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div className="">
+                <div className="form-group">
+                  <label htmlFor="name">{item.placeHolder}</label>
+
+                  <div className="input-wrap">
+                    <InputNumber
+                      {...field}
+                      className="form-control"
+                      formatter={(value) =>
+                        `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                      }
+                    />
+                  </div>
+                  {errors &&
+                    errors[item.field as keyof DataRequestInput] &&
+                    errors[item.field as keyof DataRequestInput]?.message && (
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors[item.field as keyof DataRequestInput]?.message}
+                      </p>
+                    )}
+                </div>
               </div>
             )}
           />
@@ -272,7 +316,7 @@ const LandingPage = () => {
                       <div key={input.field}>{renderInput(input)}</div>
                     ))}
 
-                    {/* <div className="col-md-12">
+                    <div className="">
                       <div className="form-group">
                         <label htmlFor="name">Payment Method</label>
                         <div className="d-lg-flex">
@@ -305,10 +349,18 @@ const LandingPage = () => {
                             name="payload"
                           />
                         </div>
+                        {errors.payload && (
+                          <p
+                            style={{ color: " #FFCC47" }}
+                            className="text-sm text-red-600"
+                          >
+                            {errors.payload.message}
+                          </p>
+                        )}
                       </div>
-                    </div> */}
+                    </div>
 
-                    <div className="col-md-12">
+                    <div className="">
                       <div className="form-group">
                         <input
                           type="submit"

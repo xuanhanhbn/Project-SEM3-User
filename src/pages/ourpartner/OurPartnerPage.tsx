@@ -13,6 +13,7 @@ import pn9 from "assets/images/partners/attachment_101285985.jpg";
 import pn10 from "assets/images/partners/attachment_109729989.png";
 import pn11 from "assets/images/partners/attachment_113975607.jpg";
 import pn12 from "assets/images/partners/attachment_129000522.jpg";
+import { Link } from "react-router-dom";
 
 const partnerList = [
   {
@@ -78,8 +79,8 @@ function OurPartnerPage() {
         <div className="overlay"></div>
         <div className="container">
           <div className="row no-gutters slider-text align-items-end">
-            <div className="col-md-9  pb-5">
-              <p className="breadcrumbs mb-2">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
                 <span className="mr-2">
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
@@ -104,13 +105,19 @@ function OurPartnerPage() {
                   {partnerList.map((list) => {
                     return (
                       <div key={list.name} className="column">
-                        <div className="card">
-                          <img
-                            style={{ maxHeight: "125px", marginBottom: 10 }}
-                            src={list.path}
-                            alt=""
-                          />
-                          <p>Our {list.name}</p>
+                        <div>
+                          <Link
+                            className="card"
+                            style={{ color: "black" }}
+                            to="/partnerdetail"
+                          >
+                            <img
+                              style={{ maxHeight: "125px", marginBottom: 10 }}
+                              src={list.path}
+                              alt=""
+                            />
+                            Our {list.name}
+                          </Link>
                         </div>
                       </div>
                     );

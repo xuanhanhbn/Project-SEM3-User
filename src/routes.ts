@@ -50,6 +50,25 @@ const routes = [
         path: paths.login,
         component: lazy(() => import("pages/login/LoginPage")),
       },
+      {
+        path: paths.partnerdetail,
+        component: lazy(
+          () =>
+            import(
+              "pages/ourpartner/components/partnersdetails/PartnerDetailPage"
+            )
+        ),
+      },
+      {
+        path: paths.signup,
+        component: lazy(() => import("pages/signup/SignupPage")),
+      },
+      {
+        path: paths.forgotpassword,
+        component: lazy(
+          () => import("pages/forgotpassword/ForgotPasswordPage")
+        ),
+      },
     ],
   },
 ];

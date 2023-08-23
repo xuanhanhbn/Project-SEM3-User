@@ -48,7 +48,7 @@ const showPass = (
   </svg>
 );
 
-const LoginPage = () => {
+const SignUpPage = () => {
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -87,26 +87,36 @@ const LoginPage = () => {
 
   // render input
   const renderInput = (item: typeInputLogin) => {
-    if (item.field === "userName") {
+    if (
+      item.field === "userName" ||
+      item.field === "fullName" ||
+      item.field === "phone" ||
+      item.field === "email"
+    ) {
       return (
         <Controller
-          name="userName"
+          name={item.field}
           control={control}
           render={({ field: { onChange, value } }) => {
             return (
               <div style={{ marginBottom: 20 }}>
                 <TextField
                   fullWidth
-                  label="Username"
+                  label={item.placeHolder}
                   placeholder="carterLeonard"
                   onChange={onChange}
                   value={value}
                 />
-                {errors.userName && (
-                  <p style={{ color: "red" }} className="text-sm text-red-600">
-                    {errors.userName.message}
-                  </p>
-                )}
+                {errors &&
+                  errors[item.field as keyof DataRequestInput] &&
+                  errors[item.field as keyof DataRequestInput]?.message && (
+                    <p
+                      style={{ color: "red" }}
+                      className="text-sm text-red-600"
+                    >
+                      {errors[item.field as keyof DataRequestInput]?.message}
+                    </p>
+                  )}
               </div>
             );
           }}
@@ -183,7 +193,7 @@ const LoginPage = () => {
                 fontSize={24}
                 fontWeight={700}
               >
-                Sign In
+                Sign up
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -203,8 +213,8 @@ const LoginPage = () => {
                   </Link>
                 </Typography>
                 <Typography variant="h5">
-                  <Link style={{ color: "#e83e8c" }} to="/signup">
-                    Sign up
+                  <Link style={{ color: "#e83e8c" }} to="/login">
+                    Sign in
                   </Link>
                 </Typography>
               </Grid>
@@ -227,4 +237,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;

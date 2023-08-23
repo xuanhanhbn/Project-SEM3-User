@@ -10,4 +10,8 @@ export const paths = {
   causedetails: "/causedetails",
   blogdetails: "/blogdetails",
   login: "/login",
+  partnerdetail: '/partnerdetail',
+  signup: '/signup',
+  forgotpassword: '/forgotpassword',
+  changepassword: '/changepassword'
 };

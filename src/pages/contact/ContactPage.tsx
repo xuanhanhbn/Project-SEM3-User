@@ -1,16 +1,76 @@
 import React from "react";
 import bg2 from "assets/images/carousel/bg_2.jpg";
 import about from "assets/images/background/about-3.jpg";
-import { inputContact } from "./constants";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 import FormControl from "@mui/material/FormControl";
 
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, Controller } from "react-hook-form";
+
+import {
+  DataRequestInput,
+  inputContact,
+  typeInputContact,
+  validationSchema,
+} from "./constants";
 
 function ContactPage() {
-  const { register, handleSubmit, control } = useForm();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<DataRequestInput>({
+    mode: "all",
+    criteriaMode: "all",
+    defaultValues: {
+      fullName: "",
+      email: "",
+      message: "",
+      subject: "",
+    },
+    resolver: yupResolver(validationSchema),
+  });
+
   const onSubmit = (data: any) => console.log(data);
+
+  // render input
+  const renderInput = (item: typeInputContact) => {
+    if (
+      item.field === "subject" ||
+      item.field === "message" ||
+      item.field === "fullName" ||
+      item.field === "email"
+    ) {
+      return (
+        <>
+          <Controller
+            name={item.field}
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <div className="col-md-12">
+                <div className="form-group">
+                  <label className="label">{item.placeHolder}</label>
+                  <input {...field} type="text" className="form-control" />
+                  {errors &&
+                    errors[item.field as keyof DataRequestInput] &&
+                    errors[item.field as keyof DataRequestInput]?.message && (
+                      <p
+                        style={{ color: " #FFCC47" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors[item.field as keyof DataRequestInput]?.message}
+                      </p>
+                    )}
+                </div>
+              </div>
+            )}
+          />
+        </>
+      );
+    }
+  };
 
   return (
     <>
@@ -144,64 +204,10 @@ function ContactPage() {
                         className="contactForm"
                       >
                         <div className="row">
-                          {inputContact.map((input) => {
-                            if (
-                              input.field == "fullName" ||
-                              input.field == "email"
-                            ) {
-                              return (
-                                <Controller
-                                  key={input.field}
-                                  control={control}
-                                  render={({ field: { onChange, value } }) => {
-                                    return (
-                                      <div className="col-md-6">
-                                        <div className="form-group">
-                                          <label className="label">
-                                            {input.value}
-                                          </label>
-                                          <input
-                                            onChange={onChange}
-                                            value={value}
-                                            className="form-control"
-                                            name={input.field}
-                                            placeholder={input.value}
-                                          />
-                                        </div>
-                                      </div>
-                                    );
-                                  }}
-                                  name={input.field}
-                                />
-                              );
-                            } else {
-                              return (
-                                <Controller
-                                  key={input.field}
-                                  control={control}
-                                  render={({ field: { onChange, value } }) => {
-                                    return (
-                                      <div className="col-md-12">
-                                        <div className="form-group">
-                                          <label className="label">
-                                            {input.value}
-                                          </label>
-                                          <input
-                                            onChange={onChange}
-                                            value={value}
-                                            className="form-control"
-                                            name={input.field}
-                                            placeholder={input.value}
-                                          />
-                                        </div>
-                                      </div>
-                                    );
-                                  }}
-                                  name={input.field}
-                                />
-                              );
-                            }
-                          })}
+                          {inputContact.map((input) => (
+                            <div key={input.field}>{renderInput(input)}</div>
+                          ))}
+
                           <div className="col-md-12">
                             <div className="form-group">
                               <input
@@ -227,6 +233,7 @@ function ContactPage() {
                 </div>
               </div>
             </div>
+            {/* map */}
             <div className="col-md-12">
               <div>
                 <iframe
