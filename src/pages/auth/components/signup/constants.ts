@@ -50,7 +50,7 @@ export const validationSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
   phone: Yup.string()
     .required("Phone number is required")
-    .matches(phoneRegExp, "Phone number is not valid")
+    .matches(phoneRegExp, "Phone numbers starting with 0")
     .min(10, "Phone number minium 10 characters"),
   fullName: Yup.string().required("Full name is required"),
   email: Yup.string().required("Email is required").email("Email is invalid."),

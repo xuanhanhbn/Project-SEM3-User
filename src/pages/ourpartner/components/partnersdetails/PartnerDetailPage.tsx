@@ -30,6 +30,7 @@ function PartnerDetailPage() {
           </div>
         </div>
       </section>
+      
     </>
   );
 }

@@ -39,7 +39,7 @@ const routes = [
       {
         path: paths.causedetails,
         component: lazy(
-          () => import("pages/home/components/causedetails/CauseDetailsPage")
+          () => import("pages/causes/components/causedetails/CauseDetailsPage")
         ),
       },
       {
@@ -48,7 +48,7 @@ const routes = [
       },
       {
         path: paths.login,
-        component: lazy(() => import("pages/login/LoginPage")),
+        component: lazy(() => import("pages/auth/components/login/LoginPage")),
       },
       {
         path: paths.partnerdetail,
@@ -61,13 +61,25 @@ const routes = [
       },
       {
         path: paths.signup,
-        component: lazy(() => import("pages/signup/SignupPage")),
+        component: lazy(() => import("pages/auth/components/signup/SignupPage")),
       },
       {
         path: paths.forgotpassword,
         component: lazy(
-          () => import("pages/forgotpassword/ForgotPasswordPage")
+          () => import("pages/auth/components/forgotpassword/ForgotPasswordPage")
         ),
+      },
+      {
+        path: paths.volunteer,
+        component: lazy(() => import("pages/volunteer/VolunteerPage")),
+      },
+      {
+        path: paths.causes,
+        component: lazy(() => import("pages/causes/CausesPage")),
+      },
+      {
+        path: paths.changepassword,
+        component: lazy(() => import("pages/auth/components/changepassword/ChangePasswordPage")),
       },
     ],
   },

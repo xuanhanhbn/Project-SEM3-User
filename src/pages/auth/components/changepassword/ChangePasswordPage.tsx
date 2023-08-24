@@ -1,3 +1,5 @@
+import React from "react";
+import bg from "assets/images/gallery/page-title-bg-1.jpg";
 // ** React Imports
 import { useState } from "react";
 
@@ -20,8 +22,8 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 import {
   DataRequestInput,
-  inputForgotPassword,
-  typeInputinputForgotPassword,
+  inputChangePassword,
+  typeInputinputChangePassword,
   validationSchema,
 } from "./constants";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -30,7 +32,7 @@ import { Link } from "react-router-dom";
 
 // Styled component for the form
 const Form = styled("form")(({ theme }) => ({
-  maxWidth: 400,
+  maxWidth: 500,
   padding: theme.spacing(12),
   borderRadius: theme.shape.borderRadius,
   border: `1px solid ${theme.palette.divider}`,
@@ -48,7 +50,7 @@ const showPass = (
   </svg>
 );
 
-const SignUpPage = () => {
+function ChangePasswordPage() {
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -60,6 +62,11 @@ const SignUpPage = () => {
     showPasswordConfirm: false,
   });
 
+  const [valuesNewpassword, setValuesvaluesNewpassword] = useState({
+    passwordNew: "",
+    showPasswordNew: false,
+  });
+
   const {
     handleSubmit,
     control,
@@ -68,7 +75,8 @@ const SignUpPage = () => {
     mode: "all",
     criteriaMode: "all",
     defaultValues: {
-      userName: "",
+      newPassword: "",
+      confirmPassword: "",
       password: "",
     },
     resolver: yupResolver(validationSchema),
@@ -85,6 +93,13 @@ const SignUpPage = () => {
     });
   };
 
+  const handleClickShowNewPassword = () => {
+    setValuesvaluesNewpassword({
+      ...valuesNewpassword,
+      showPasswordNew: !valuesNewpassword.showPasswordNew,
+    });
+  };
+
   const handleMouseDownPassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
   };
@@ -92,38 +107,7 @@ const SignUpPage = () => {
   const onSubmit = (data: any) => console.log(data);
 
   // render input
-  const renderInput = (item: typeInputinputForgotPassword) => {
-    if (item.field === "userName" || item.field === "email") {
-      return (
-        <Controller
-          name={item.field}
-          control={control}
-          render={({ field: { onChange, value } }) => {
-            return (
-              <div style={{ marginBottom: 20 }}>
-                <TextField
-                  fullWidth
-                  label={item.placeHolder}
-                  placeholder="carterLeonard"
-                  onChange={onChange}
-                  value={value}
-                />
-                {errors &&
-                  errors[item.field as keyof DataRequestInput] &&
-                  errors[item.field as keyof DataRequestInput]?.message && (
-                    <p
-                      style={{ color: "red" }}
-                      className="text-sm text-red-600"
-                    >
-                      {errors[item.field as keyof DataRequestInput]?.message}
-                    </p>
-                  )}
-              </div>
-            );
-          }}
-        />
-      );
-    }
+  const renderInput = (item: typeInputinputChangePassword) => {
     if (item.field === "password") {
       return (
         <div style={{ marginBottom: 20 }}>
@@ -139,7 +123,7 @@ const SignUpPage = () => {
                       Password
                     </InputLabel>
                     <OutlinedInput
-                      label="Password"
+                      label="password"
                       value={value}
                       onChange={onChange}
                       id="form-layouts-alignment-password"
@@ -226,69 +210,134 @@ const SignUpPage = () => {
         </div>
       );
     }
+    if (item.field === "newPassword") {
+      return (
+        <div style={{ marginBottom: 20 }}>
+          <Controller
+            name="newPassword"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value } }) => {
+              return (
+                <>
+                  <FormControl fullWidth>
+                    <InputLabel htmlFor="form-layouts-alignment-password">
+                      New Password
+                    </InputLabel>
+                    <OutlinedInput
+                      label="New Password"
+                      value={value}
+                      onChange={onChange}
+                      id="form-layouts-alignment-password"
+                      type={
+                        valuesNewpassword.showPasswordNew ? "text" : "password"
+                      }
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            edge="end"
+                            onClick={handleClickShowNewPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            aria-label="toggle password visibility"
+                          >
+                            {valuesNewpassword.showPasswordNew
+                              ? hidePass
+                              : showPass}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                    {errors.newPassword && (
+                      <p
+                        style={{ color: "red" }}
+                        className="text-sm text-red-600"
+                      >
+                        {errors.newPassword.message}
+                      </p>
+                    )}
+                  </FormControl>
+                </>
+              );
+            }}
+          />
+        </div>
+      );
+    }
   };
 
   return (
-    <Card>
-      <CardContent
-        sx={{
-          minHeight: 500,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+    <div>
+      <section
+        className="hero-wrap hero-wrap-2"
+        style={{
+          backgroundImage: `url(  ${bg})`,
         }}
+        data-stellar-background-ratio="0.5"
       >
-        <Form onSubmit={(e) => e.preventDefault()}>
-          <Grid container spacing={5}>
-            <Grid item xs={12}>
-              <Typography
-                className="justify-content-around d-flex"
-                variant="h5"
-                fontSize={24}
-                fontWeight={700}
-              >
-                Forgot password
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              {inputForgotPassword.map((input) => (
-                <div key={input.field}>{renderInput(input)}</div>
-              ))}
+        <div className="overlay"></div>
+        <div className="container">
+          <div className="row no-gutters slider-text align-items-end">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
+                <span className="mr-2">
+                  <a href="index.html">
+                    Home <i className="ion-ios-arrow-forward"></i>
+                  </a>
+                </span>
+                <span>
+                  Change password <i className="ion-ios-arrow-forward"></i>
+                </span>
+              </p>
+              <h1 className="mb-0 bread">Change password</h1>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <Grid
-                className="justify-content-around d-flex"
-                style={{ margin: "20px 0px" }}
-                item
-                xs={12}
-              >
-                <Typography variant="h5">
-                  <Link style={{ color: "#e83e8c" }} to="/signup">
-                    Sign up
-                  </Link>
-                </Typography>
-                <Typography variant="h5">
-                  <Link style={{ color: "#e83e8c" }} to="/login">
-                    Sign in
-                  </Link>
+      <Card>
+        <CardContent
+          sx={{
+            minHeight: 500,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Form onSubmit={(e) => e.preventDefault()}>
+            <Grid container spacing={5}>
+              <Grid item xs={12}>
+                <Typography
+                  className="justify-content-around d-flex"
+                  variant="h5"
+                  fontSize={24}
+                  fontWeight={700}
+                >
+                  Change password
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Button
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                  sx={{ width: "100%" }}
-                  onClick={handleSubmit(onSubmit)}
-                >
-                  Login
-                </Button>
+                {inputChangePassword.map((input) => (
+                  <div key={input.field}>{renderInput(input)}</div>
+                ))}
+
+                <Grid item xs={12}>
+                  <Button
+                    size="large"
+                    type="submit"
+                    variant="contained"
+                    sx={{ width: "100%" }}
+                    onClick={handleSubmit(onSubmit)}
+                  >
+                    Submit
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </Form>
-      </CardContent>
-    </Card>
+          </Form>
+        </CardContent>
+      </Card>
+    </div>
   );
-};
+}
 
-export default SignUpPage;
+export default ChangePasswordPage;

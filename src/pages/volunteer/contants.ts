@@ -13,15 +13,11 @@ export const inputHomeDonate = [
   },
 
   {
-    field: "selectCauses",
-    placeHolder: "Select Causes",
-    type: "SELECT",
-  },
-  {
-    field: "amount",
-    placeHolder: "Amount",
+    field: "phone",
+    placeHolder: "Phone number",
     type: "INPUT",
   },
+  
 ];
 
 export const inputVolunteerRegistration = [
@@ -66,40 +62,4 @@ export type DataRequestInput = {
   phone: string;
 };
 
-export const listCauses = [
-  {
-    field: "",
-    value: "",
-  },
-  {
-    field: "houseWashing",
-    value: "House Washing",
-  },
-  {
-    field: "roofCleaning",
-    value: "Roof Cleaning",
-  },
-  {
-    field: "drivewayCleaning",
-    value: "Driveway Cleaning",
-  },
-  {
-    field: "gutterCleaning",
-    value: "Gutter Cleaning",
-  },
-];
 
-export const radioPayload = [
-  {
-    field: "creditCard",
-    value: "Credit Card",
-  },
-  {
-    field: "paypal",
-    value: "Paypal",
-  },
-  {
-    field: "payoneer",
-    value: "Payoneer",
-  },
-];

@@ -48,7 +48,7 @@ const showPass = (
   </svg>
 );
 
-const SignUpPage = () => {
+const LoginPage = () => {
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -87,36 +87,26 @@ const SignUpPage = () => {
 
   // render input
   const renderInput = (item: typeInputLogin) => {
-    if (
-      item.field === "userName" ||
-      item.field === "fullName" ||
-      item.field === "phone" ||
-      item.field === "email"
-    ) {
+    if (item.field === "userName") {
       return (
         <Controller
-          name={item.field}
+          name="userName"
           control={control}
           render={({ field: { onChange, value } }) => {
             return (
               <div style={{ marginBottom: 20 }}>
                 <TextField
                   fullWidth
-                  label={item.placeHolder}
+                  label="Username"
                   placeholder="carterLeonard"
                   onChange={onChange}
                   value={value}
                 />
-                {errors &&
-                  errors[item.field as keyof DataRequestInput] &&
-                  errors[item.field as keyof DataRequestInput]?.message && (
-                    <p
-                      style={{ color: "red" }}
-                      className="text-sm text-red-600"
-                    >
-                      {errors[item.field as keyof DataRequestInput]?.message}
-                    </p>
-                  )}
+                {errors.userName && (
+                  <p style={{ color: "red" }} className="text-sm text-red-600">
+                    {errors.userName.message}
+                  </p>
+                )}
               </div>
             );
           }}
@@ -193,7 +183,7 @@ const SignUpPage = () => {
                 fontSize={24}
                 fontWeight={700}
               >
-                Sign up
+                Sign In
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -213,8 +203,8 @@ const SignUpPage = () => {
                   </Link>
                 </Typography>
                 <Typography variant="h5">
-                  <Link style={{ color: "#e83e8c" }} to="/login">
-                    Sign in
+                  <Link style={{ color: "#e83e8c" }} to="/signup">
+                    Sign up
                   </Link>
                 </Typography>
               </Grid>
@@ -226,7 +216,7 @@ const SignUpPage = () => {
                   sx={{ width: "100%" }}
                   onClick={handleSubmit(onSubmit)}
                 >
-                  Login
+                  Sign in
                 </Button>
               </Grid>
             </Grid>
@@ -237,4 +227,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default LoginPage;

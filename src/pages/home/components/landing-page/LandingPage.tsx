@@ -7,7 +7,7 @@ import volunteer1 from "assets/images/volunteer/services-1.jpg";
 import volunteer2 from "assets/images/volunteer/services-2.jpg";
 import volunteer3 from "assets/images/volunteer/services-3.jpg";
 import volunteer4 from "assets/images/volunteer/services-4.jpg";
-import { Carousel, Input, InputNumber } from "antd";
+import { Carousel, Form, Input, InputNumber } from "antd";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -17,6 +17,7 @@ import FormControl from "@mui/material/FormControl";
 import {
   DataRequestInput,
   inputHomeDonate,
+  inputVolunteerRegistration,
   listCauses,
   radioPayload,
   typeInputDonate,
@@ -24,6 +25,7 @@ import {
 } from "./contants";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
+import { useState } from "react";
 
 const LandingPage = () => {
   const {
@@ -39,6 +41,7 @@ const LandingPage = () => {
       selectCauses: "",
       amount: "",
       payload: "",
+      phone: "",
     },
     resolver: yupResolver(validationSchema),
   });
@@ -90,7 +93,11 @@ const LandingPage = () => {
         />
       );
     }
-    if (item.field === "fullName" || item.field === "email") {
+    if (
+      item.field === "fullName" ||
+      item.field === "email" ||
+      item.field === "phone"
+    ) {
       return (
         <>
           <Controller
@@ -194,11 +201,8 @@ const LandingPage = () => {
                         <div className="d-flex meta">
                           <div className="">
                             <p className="mb-0">
-                              <a
-                                href=""
-                                className="px-2 py-3 btn btn-secondary px-md-4"
-                              >
-                                Become A Volunteer
+                              <a className="px-2 py-3 btn btn-secondary px-md-4">
+                                Become a volunteer
                               </a>
                             </p>
                           </div>
@@ -233,11 +237,8 @@ const LandingPage = () => {
                         <div className="d-flex meta">
                           <div className="">
                             <p className="mb-0">
-                              <a
-                                href=""
-                                className="px-2 py-3 btn btn-secondary px-md-4"
-                              >
-                                Become A Volunteer
+                              <a className="px-2 py-3 btn btn-secondary px-md-4">
+                                Become a volunteer
                               </a>
                             </p>
                           </div>
@@ -271,11 +272,8 @@ const LandingPage = () => {
                         <div className="d-flex meta">
                           <div className="">
                             <p className="mb-0">
-                              <a
-                                href=""
-                                className="px-2 py-3 btn btn-secondary px-md-4"
-                              >
-                                Become A Volunteer
+                              <a className="px-2 py-3 btn btn-secondary px-md-4">
+                                Become a volunteer
                               </a>
                             </p>
                           </div>
@@ -426,7 +424,7 @@ const LandingPage = () => {
                 </div>
               </div>
               <p>
-                <a href="#" className="btn btn-secondary btn-outline-secondary">
+                <a className="btn btn-secondary btn-outline-secondary">
                   Become A Volunteer
                 </a>
               </p>

@@ -13,5 +13,7 @@ export const paths = {
   partnerdetail: '/partnerdetail',
   signup: '/signup',
   forgotpassword: '/forgotpassword',
-  changepassword: '/changepassword'
+  changepassword: '/changepassword',
+  volunteer: '/volunteer',
+  causes: '/causes'
 };

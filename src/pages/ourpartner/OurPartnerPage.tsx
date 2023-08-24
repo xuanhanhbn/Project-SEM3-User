@@ -18,51 +18,64 @@ import { Link } from "react-router-dom";
 const partnerList = [
   {
     name: "partners 1",
-    path: pn12,
+    img: pn12,
+
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 2",
-    path: pn11,
+    img: pn11,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 3",
-    path: pn3,
+    img: pn3,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 4",
-    path: pn4,
+    img: pn4,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 5",
-    path: pn5,
+    img: pn5,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 6",
-    path: pn6,
+    img: pn6,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 7",
-    path: pn7,
+    img: pn7,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 8",
-    path: pn8,
+    img: pn8,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 9",
-    path: pn9,
+    img: pn9,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 10",
-    path: pn10,
+    img: pn10,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 11",
-    path: pn11,
+    img: pn11,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 12",
-    path: pn12,
+    img: pn12,
+    path: "https://about.meta.com/",
   },
 ];
 
@@ -102,22 +115,37 @@ function OurPartnerPage() {
             <div className="col-md-12">
               <div className="wrapper">
                 <div className="row">
+                  <h1
+                    style={{
+                      fontWeight: 700,
+                      fontSize: "4.5rem",
+                      lineHeight: 1.1,
+                      marginBottom: 50,
+                      textAlign: "center",
+                    }}
+                    className="title"
+                  >
+                    Pleasure to work with
+                  </h1>
+                </div>
+                <div className="row">
                   {partnerList.map((list) => {
                     return (
                       <div key={list.name} className="column">
                         <div>
-                          <Link
+                          <a
                             className="card"
                             style={{ color: "black" }}
-                            to="/partnerdetail"
+                            href={list.path}
+                            target="_blank"
                           >
                             <img
                               style={{ maxHeight: "125px", marginBottom: 10 }}
-                              src={list.path}
+                              src={list.img}
                               alt=""
                             />
                             Our {list.name}
-                          </Link>
+                          </a>
                         </div>
                       </div>
                     );
