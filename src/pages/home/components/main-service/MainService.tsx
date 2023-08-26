@@ -498,7 +498,7 @@ const MainService = () => {
                   </p>
                   <p>
                     <Link className="btn btn-secondary" to="/blogdetails">
-                      Donate Now
+                      Read more
                     </Link>
                   </p>
                 </div>

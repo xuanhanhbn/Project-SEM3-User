@@ -13,55 +13,69 @@ import pn9 from "assets/images/partners/attachment_101285985.jpg";
 import pn10 from "assets/images/partners/attachment_109729989.png";
 import pn11 from "assets/images/partners/attachment_113975607.jpg";
 import pn12 from "assets/images/partners/attachment_129000522.jpg";
+import { Link } from "react-router-dom";
 
 const partnerList = [
   {
     name: "partners 1",
-    path: pn12,
+    img: pn12,
+
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 2",
-    path: pn11,
+    img: pn11,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 3",
-    path: pn3,
+    img: pn3,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 4",
-    path: pn4,
+    img: pn4,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 5",
-    path: pn5,
+    img: pn5,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 6",
-    path: pn6,
+    img: pn6,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 7",
-    path: pn7,
+    img: pn7,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 8",
-    path: pn8,
+    img: pn8,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 9",
-    path: pn9,
+    img: pn9,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 10",
-    path: pn10,
+    img: pn10,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 11",
-    path: pn11,
+    img: pn11,
+    path: "https://about.meta.com/",
   },
   {
     name: "partners 12",
-    path: pn12,
+    img: pn12,
+    path: "https://about.meta.com/",
   },
 ];
 
@@ -78,8 +92,8 @@ function OurPartnerPage() {
         <div className="overlay"></div>
         <div className="container">
           <div className="row no-gutters slider-text align-items-end">
-            <div className="col-md-9  pb-5">
-              <p className="breadcrumbs mb-2">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
                 <span className="mr-2">
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
@@ -101,16 +115,37 @@ function OurPartnerPage() {
             <div className="col-md-12">
               <div className="wrapper">
                 <div className="row">
+                  <h1
+                    style={{
+                      fontWeight: 700,
+                      fontSize: "4.5rem",
+                      lineHeight: 1.1,
+                      marginBottom: 50,
+                      textAlign: "center",
+                    }}
+                    className="title"
+                  >
+                    Pleasure to work with
+                  </h1>
+                </div>
+                <div className="row">
                   {partnerList.map((list) => {
                     return (
                       <div key={list.name} className="column">
-                        <div className="card">
-                          <img
-                            style={{ maxHeight: "125px", marginBottom: 10 }}
-                            src={list.path}
-                            alt=""
-                          />
-                          <p>Our {list.name}</p>
+                        <div>
+                          <a
+                            className="card"
+                            style={{ color: "black" }}
+                            href={list.path}
+                            target="_blank"
+                          >
+                            <img
+                              style={{ maxHeight: "125px", marginBottom: 10 }}
+                              src={list.img}
+                              alt=""
+                            />
+                            Our {list.name}
+                          </a>
                         </div>
                       </div>
                     );

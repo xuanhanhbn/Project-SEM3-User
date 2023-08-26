@@ -6,6 +6,7 @@ import CustomLink from "./CustomLink";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export interface SelectedRoute {
   path: string;
@@ -73,14 +74,14 @@ const Header = () => {
               <p className="mb-0 phone pl-md-2">
                 <a href="#" className="mr-4">
                   <FontAwesomeIcon
-                    className="fa fa-phone mr-2"
+                    className="mr-2 fa fa-phone"
                     icon={faPhone}
                   />
                   +00 1234 567
                 </a>
                 <a href="#">
                   <FontAwesomeIcon
-                    className="fa fa-paper-plane mr-2"
+                    className="mr-2 fa fa-paper-plane"
                     icon={faPaperPlane}
                   />
                   youremail@email.com
@@ -151,7 +152,7 @@ const Header = () => {
         </div>
       </div>
       <nav
-        className="navbar navbar-expand-lg  ftco_navbar bg-dark ftco-navbar-light"
+        className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
         id="ftco-navbar"
       >
         <div className="container">
@@ -169,7 +170,36 @@ const Header = () => {
           </button>
 
           <div className="collapse navbar-collapse" id="ftco-nav">
-            <ul className="navbar-nav ml-auto">{listItems}</ul>
+            <ul className="ml-auto navbar-nav">{listItems}</ul>
+            <div className="dropdown">
+              <button
+                className="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Duongtm
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton1"
+              >
+                {/* <li>
+                  <a className="dropdown-item" href="#">
+                    Login/Logout
+                  </a>
+                  
+                </li> */}
+                <Link className="dropdown-item" to="/login">
+                  Login/Logout
+                </Link>
+
+                <Link className="dropdown-item" to="/changepassword">
+                  Change password
+                </Link>
+              </ul>
+            </div>
           </div>
         </div>
       </nav>

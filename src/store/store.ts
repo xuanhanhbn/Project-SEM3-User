@@ -1,18 +1,20 @@
-import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import createSagaMiddleware from 'redux-saga';
-import { history } from 'utils';
-import { all } from 'redux-saga/effects';
-
+import {
+  Action,
+  combineReducers,
+  configureStore,
+  ThunkAction,
+} from "@reduxjs/toolkit";
+import { connectRouter, routerMiddleware } from "connected-react-router";
+import createSagaMiddleware from "redux-saga";
+import { history } from "utils";
+import { all } from "redux-saga/effects";
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
-
 });
 function* rootSaga() {
   yield all([]);
 }
-
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
