@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Container } from "@mui/material";
 import bg2 from "assets/images/carousel/bg_2.jpg";
 import bg3 from "assets/images/carousel/bg_3.jpg";
@@ -7,8 +7,14 @@ import person1 from "assets/images/business/person_1.jpg";
 import person2 from "assets/images/business/person_2.jpg";
 import person3 from "assets/images/business/person_3.jpg";
 import person4 from "assets/images/business/person_4.jpg";
+import { useAppDispatch } from "store/hook";
+import { aboutActions } from "./aboutSlice";
 
 const AboutPage = () => {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+dispatch(aboutActions.getListAbout())
+  },[])
   return (
     <>
       <section

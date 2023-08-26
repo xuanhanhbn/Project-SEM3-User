@@ -9,11 +9,21 @@ import createSagaMiddleware from "redux-saga";
 import { history } from "utils";
 import { all } from "redux-saga/effects";
 
+// LOGIN
+import loginReducer from "pages/auth/components/login/loginSlice";
+import loginSaga from "pages/auth/components/login/loginSaga";
+
+// ABOUT
+import aboutReducer from "pages/about/aboutSlice";
+import aboutSaga from "pages/about/aboutSaga";
+
 const rootReducer = combineReducers({
   router: connectRouter(history),
+  login:loginReducer,
+  about:aboutReducer
 });
 function* rootSaga() {
-  yield all([]);
+  yield all([loginSaga(),aboutSaga()]);
 }
 
 const sagaMiddleware = createSagaMiddleware();

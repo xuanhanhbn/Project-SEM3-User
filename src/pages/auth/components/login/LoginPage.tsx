@@ -27,6 +27,9 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { requestLogin } from "./type";
+import { useAppDispatch } from "store/hook";
+import { loginActions } from "./loginSlice";
 
 // Styled component for the form
 const Form = styled("form")(({ theme }) => ({
@@ -49,6 +52,9 @@ const showPass = (
 );
 
 const LoginPage = () => {
+
+  const dispatch = useAppDispatch();
+
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -83,7 +89,9 @@ const LoginPage = () => {
     event.preventDefault();
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: requestLogin) => {
+    dispatch(loginActions.onLogin(data))
+  }
 
   // render input
   const renderInput = (item: typeInputLogin) => {
