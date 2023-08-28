@@ -37,6 +37,10 @@ import changePasswordSaga from "pages/auth/components/changepassword/changePassw
 import contactReducer from "pages/contact/contactSlice";
 import contactSaga from "pages/contact/contactSaga";
 
+//PARTNER
+import partnerReducer from "pages/ourpartner/partnerSlice";
+import partnerSaga from "pages/ourpartner/partnerSaga";
+
 const rootReducer = combineReducers({
   router: connectRouter(history),
   login: loginReducer,
@@ -46,6 +50,7 @@ const rootReducer = combineReducers({
   register: registerReducer,
   changePassword: changePasswordReducer,
   contact: contactReducer,
+  partner: partnerReducer,
 });
 function* rootSaga() {
   yield all([
@@ -56,6 +61,7 @@ function* rootSaga() {
     registerSaga(),
     changePasswordSaga(),
     contactSaga(),
+    partnerSaga(),
   ]);
 }
 

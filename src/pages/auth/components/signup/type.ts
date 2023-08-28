@@ -9,4 +9,5 @@ export interface requestRegister {
   fullName: string;
   email: string;
   phone: string;
+  dateOfBirth: string;
 }

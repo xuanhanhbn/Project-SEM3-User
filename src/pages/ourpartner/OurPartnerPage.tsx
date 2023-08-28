@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./gird.css";
 import bg from "assets/images/gallery/page-title-bg-1.jpg";
 import pn1 from "assets/images/partners/12ea69e9-8c54-4579-aa09-0e65dae025a9.jpg";
@@ -14,6 +14,10 @@ import pn10 from "assets/images/partners/attachment_109729989.png";
 import pn11 from "assets/images/partners/attachment_113975607.jpg";
 import pn12 from "assets/images/partners/attachment_129000522.jpg";
 import { Link } from "react-router-dom";
+
+import { useAppDispatch } from "store/hook";
+import { partnerActions, selectPartnerList } from "./partnerSlice";
+import { useSelector } from "react-redux";
 
 const partnerList = [
   {
@@ -80,6 +84,16 @@ const partnerList = [
 ];
 
 function OurPartnerPage() {
+  const dispatch = useAppDispatch();
+  const globalData = useSelector(selectPartnerList);
+  console.log()
+  const dataPartner = globalData?.list;
+  
+
+  useEffect(() => {
+    dispatch(partnerActions.getListPartner());
+  }, []);
+
   return (
     <div>
       <section

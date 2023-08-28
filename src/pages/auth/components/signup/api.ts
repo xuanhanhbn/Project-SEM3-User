@@ -3,7 +3,7 @@ import { requestRegister, responseRegister } from "./type";
 
 const getLoginDataApi = {
   login(data: requestRegister): Promise<responseRegister> {
-    const url = "/students";
+    const url = "/user/register";
     return axiosClient.post(url, data);
   },
 };
