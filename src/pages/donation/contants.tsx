@@ -35,7 +35,7 @@ export type DataRequestInput = {
   email: string;
   amount: string;
   selectCauses: string;
-  payload: string;
+  payment: string;
 };
 
 export const listCauses = [
@@ -81,5 +81,5 @@ export const validationSchema = Yup.object().shape({
   email: Yup.string().required("Email is required").email("Email is invalid."),
   selectCauses: Yup.string().required("selectCauses is required"),
   amount: Yup.string().required("Amount is required"),
-  payload: Yup.string().required("Payload is required"),
+  payment: Yup.string().required("Payload is required"),
 });

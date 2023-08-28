@@ -33,7 +33,7 @@ function DonationPage() {
       email: "",
       selectCauses: "",
       amount: "",
-      payload: "",
+      payment: "",
     },
     resolver: yupResolver(validationSchema),
   });
@@ -253,15 +253,15 @@ function DonationPage() {
                                       </FormControl>
                                     </>
                                   )}
-                                  name="payload"
+                                  name="payment"
                                 />
                               </div>
-                              {errors.payload && (
+                              {errors.payment && (
                                 <p
                                   style={{ color: " #FFCC47" }}
                                   className="text-sm text-red-600"
                                 >
-                                  {errors.payload.message}
+                                  {errors.payment.message}
                                 </p>
                               )}
                             </div>

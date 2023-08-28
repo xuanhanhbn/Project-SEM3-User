@@ -1,5 +1,6 @@
 // ** React Imports
-import { useState } from "react";
+import { useState, forwardRef } from "react";
+import "./style.css";
 
 // ** MUI Imports
 import Card from "@mui/material/Card";
@@ -28,6 +29,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 
+import { requestRegister } from "./type";
+import { useAppDispatch } from "store/hook";
+import { registerActions } from "./registerSlice";
+
+import type { DatePickerProps } from "antd";
+import { DatePicker, Space } from "antd";
+import Moment from "react-moment";
+import moment from "moment";
+
 // Styled component for the form
 const Form = styled("form")(({ theme }) => ({
   maxWidth: 400,
@@ -35,6 +45,10 @@ const Form = styled("form")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   border: `1px solid ${theme.palette.divider}`,
 }));
+
+const CustomInput = forwardRef((props, ref) => {
+  return <TextField inputRef={ref} label="Birth Date" fullWidth {...props} />;
+});
 
 const hidePass = (
   <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512">
@@ -49,6 +63,8 @@ const showPass = (
 );
 
 const SignUpPage = () => {
+  const dispatch = useAppDispatch();
+
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -65,6 +81,11 @@ const SignUpPage = () => {
     defaultValues: {
       userName: "",
       password: "",
+      phone: "",
+      email: "",
+      dateOfBirth: "",
+      fullName: "",
+      roles: "user",
     },
     resolver: yupResolver(validationSchema),
   });
@@ -83,7 +104,10 @@ const SignUpPage = () => {
     event.preventDefault();
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: requestRegister) => {
+    data.dateOfBirth = moment(data.dateOfBirth).format("YYYY-MM-DD");
+    dispatch(registerActions.onRegister(data));
+  };
 
   // render input
   const renderInput = (item: typeInputLogin) => {
@@ -200,6 +224,24 @@ const SignUpPage = () => {
               {inputLogin.map((input) => (
                 <div key={input.field}>{renderInput(input)}</div>
               ))}
+
+              <Controller
+                name="dateOfBirth"
+                control={control}
+                render={({ field: { onChange, value } }) => {
+                  return (
+                    <div style={{ marginBottom: 20, marginTop: 20 }}>
+                      <Space>
+                        <DatePicker
+                          placeholder="Birth date"
+                          showToday={false}
+                          onChange={onChange}
+                        />
+                      </Space>
+                    </div>
+                  );
+                }}
+              />
 
               <Grid
                 className="justify-content-around d-flex"

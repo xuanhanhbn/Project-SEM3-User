@@ -15,9 +15,10 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "./i18n";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { HelmetProvider } from "react-helmet-async";
+import { Provider } from "react-redux";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

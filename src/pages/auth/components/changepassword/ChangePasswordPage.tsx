@@ -20,6 +20,10 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
+import { requestChangePassword } from "./type";
+import { useAppDispatch } from "store/hook";
+import { changePasswordActions } from "./changePasswordSlice";
+
 import {
   DataRequestInput,
   inputChangePassword,
@@ -51,6 +55,8 @@ const showPass = (
 );
 
 function ChangePasswordPage() {
+  const dispatch = useAppDispatch();
+
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -104,7 +110,9 @@ function ChangePasswordPage() {
     event.preventDefault();
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: requestChangePassword) => {
+    dispatch(changePasswordActions.onChangePassword(data));
+  };
 
   // render input
   const renderInput = (item: typeInputinputChangePassword) => {

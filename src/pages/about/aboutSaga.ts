@@ -6,8 +6,13 @@ import getAboutDataApi from './api';
 function* onGetAboutData() {
   try {
     const response: responseAboutList<responseDataAboutList> = yield call(getAboutDataApi.getAbout);
-    // Sẽ cần kiểm tra điều kiện khi nào thành công thì mới put data, nhưng hiện tại chưa xác định được response nên sẽ để tạm như này
-    yield put(aboutActions.getListAboutSuccess(response));
+    if (response.data) {
+      // Response chứa dữ liệu, put data
+      yield put(aboutActions.getListAboutSuccess(response));
+    } else {
+      // Response không chứa dữ liệu, thực hiện thao tác khác
+      yield put(aboutActions.getListAboutFailed());
+    }
   } catch (error) {
     console.log('Failed to fetch city list', error);
     yield put(aboutActions.getListAboutFailed());

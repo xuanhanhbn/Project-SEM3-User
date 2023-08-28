@@ -14,7 +14,7 @@ import { createBrowserHistory } from "history";
 const history: any = createBrowserHistory();
 
 function App() {
-  const mode = 'light';
+  const mode = "light";
   // const dispatch = useDispatch();
 
   // // Get mode from cookie in the first access page

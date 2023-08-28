@@ -27,6 +27,9 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { requestForgotPassword } from "./type";
+import { useAppDispatch } from "store/hook";
+import { forgotPasswordActions } from "./forgotPasswordSlice";
 
 // Styled component for the form
 const Form = styled("form")(({ theme }) => ({
@@ -49,6 +52,8 @@ const showPass = (
 );
 
 const SignUpPage = () => {
+  const dispatch = useAppDispatch();
+
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -69,7 +74,9 @@ const SignUpPage = () => {
     criteriaMode: "all",
     defaultValues: {
       userName: "",
-      password: "",
+      newPassword: "",
+      email: "",
+      confirmPassword: "",
     },
     resolver: yupResolver(validationSchema),
   });
@@ -89,7 +96,9 @@ const SignUpPage = () => {
     event.preventDefault();
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: requestForgotPassword) => {
+    dispatch(forgotPasswordActions.onForgotPassword(data));
+  };
 
   // render input
   const renderInput = (item: typeInputinputForgotPassword) => {
@@ -124,11 +133,11 @@ const SignUpPage = () => {
         />
       );
     }
-    if (item.field === "password") {
+    if (item.field === "newPassword") {
       return (
         <div style={{ marginBottom: 20 }}>
           <Controller
-            name="password"
+            name="newPassword"
             control={control}
             defaultValue=""
             render={({ field: { onChange, value } }) => {
@@ -139,7 +148,7 @@ const SignUpPage = () => {
                       Password
                     </InputLabel>
                     <OutlinedInput
-                      label="Password"
+                      label="New Password"
                       value={value}
                       onChange={onChange}
                       id="form-layouts-alignment-password"
@@ -157,12 +166,12 @@ const SignUpPage = () => {
                         </InputAdornment>
                       }
                     />
-                    {errors.password && (
+                    {errors.newPassword && (
                       <p
                         style={{ color: "red" }}
                         className="text-sm text-red-600"
                       >
-                        {errors.password.message}
+                        {errors.newPassword.message}
                       </p>
                     )}
                   </FormControl>

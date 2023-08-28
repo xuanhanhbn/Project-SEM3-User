@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bg2 from "assets/images/carousel/bg_2.jpg";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "store/hook";
+import { causesActions, makeSelectCauses } from "./causesSlice";
+import { useSelector } from "react-redux";
 
 function CausesPage() {
+  const dispatch = useAppDispatch();
+  const globalData = useSelector(makeSelectCauses);
+  const dataCauses = globalData?.list;
+  console.log("causes", dataCauses);
+  useEffect(() => {
+    dispatch(causesActions.getListCauses());
+  }, []);
+
   return (
     <div>
       <section

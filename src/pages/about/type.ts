@@ -5,7 +5,6 @@ export interface responseAboutList<T> {
 
 export interface responseDataAboutList {
   id:string,
-
 }
 
 

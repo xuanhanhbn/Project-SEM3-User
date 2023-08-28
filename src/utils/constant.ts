@@ -1,1 +1,1 @@
-export const baseApi = `http://10.100.30.35:9075`;
+export const baseApi = `https://eproject3.azurewebsites.net/api`;
