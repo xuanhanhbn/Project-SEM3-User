@@ -28,6 +28,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 
+import { requestRegister } from "./type";
+import { useAppDispatch } from "store/hook";
+import { registerActions } from "./registerSlice";
+
 // Styled component for the form
 const Form = styled("form")(({ theme }) => ({
   maxWidth: 400,
@@ -49,6 +53,8 @@ const showPass = (
 );
 
 const SignUpPage = () => {
+  const dispatch = useAppDispatch();
+
   // ** State
   const [values, setValues] = useState({
     password: "",
@@ -83,7 +89,9 @@ const SignUpPage = () => {
     event.preventDefault();
   };
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: requestRegister) => {
+    dispatch(registerActions.onRegister(data));
+  };
 
   // render input
   const renderInput = (item: typeInputLogin) => {

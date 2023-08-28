@@ -20,62 +20,62 @@ const partnerList = [
     name: "partners 1",
     img: pn12,
 
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 2",
     img: pn11,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 3",
     img: pn3,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 4",
     img: pn4,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 5",
     img: pn5,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 6",
     img: pn6,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 7",
     img: pn7,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 8",
     img: pn8,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 9",
     img: pn9,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 10",
     img: pn10,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 11",
     img: pn11,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
   {
     name: "partners 12",
     img: pn12,
-    path: "https://about.meta.com/",
+    path: "/partnerdetail",
   },
 ];
 
@@ -133,11 +133,10 @@ function OurPartnerPage() {
                     return (
                       <div key={list.name} className="column">
                         <div>
-                          <a
+                          <Link
                             className="card"
                             style={{ color: "black" }}
-                            href={list.path}
-                            target="_blank"
+                            to={list.path}
                           >
                             <img
                               style={{ maxHeight: "125px", marginBottom: 10 }}
@@ -145,7 +144,7 @@ function OurPartnerPage() {
                               alt=""
                             />
                             Our {list.name}
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     );

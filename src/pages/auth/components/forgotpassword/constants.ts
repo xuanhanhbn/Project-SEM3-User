@@ -13,8 +13,8 @@ export const inputForgotPassword = [
   },
 
   {
-    field: "password",
-    placeHolder: "Password",
+    field: "newPassword",
+    placeHolder: "New Password",
     type: "INPUT",
   },
   {
@@ -32,16 +32,16 @@ export type typeInputinputForgotPassword = {
 
 export type DataRequestInput = {
   userName: string;
-  password: string;
+  newPassword: string;
   confirmPassword: string;
   email: string;
 };
 
 export const validationSchema = Yup.object().shape({
   userName: Yup.string().required("User name is required"),
-  password: Yup.string().required("Password is required"),
+  newPassword: Yup.string().required("Password is required"),
   email: Yup.string().required("Email is required"),
   confirmPassword: Yup.string()
     .required("Confirm Password is required")
-    .oneOf([Yup.ref("password")], "Passwords do not match"),
+    .oneOf([Yup.ref("newPassword")], "Passwords do not match"),
 });

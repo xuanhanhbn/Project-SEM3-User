@@ -52,7 +52,6 @@ const showPass = (
 );
 
 const LoginPage = () => {
-
   const dispatch = useAppDispatch();
 
   // ** State
@@ -90,8 +89,8 @@ const LoginPage = () => {
   };
 
   const onSubmit = (data: requestLogin) => {
-    dispatch(loginActions.onLogin(data))
-  }
+    dispatch(loginActions.onLogin(data));
+  };
 
   // render input
   const renderInput = (item: typeInputLogin) => {

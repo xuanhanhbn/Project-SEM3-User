@@ -8,13 +8,19 @@ import person2 from "assets/images/business/person_2.jpg";
 import person3 from "assets/images/business/person_3.jpg";
 import person4 from "assets/images/business/person_4.jpg";
 import { useAppDispatch } from "store/hook";
-import { aboutActions } from "./aboutSlice";
+import { aboutActions, selectCityList } from "./aboutSlice";
+import { useSelector } from "react-redux";
 
 const AboutPage = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
+  const globalData = useSelector(selectCityList);
+  const dataAbout = globalData?.list;
+  console.log("about", dataAbout);
+
   useEffect(() => {
-dispatch(aboutActions.getListAbout())
-  },[])
+    dispatch(aboutActions.getListAbout());
+  }, []);
+
   return (
     <>
       <section
@@ -27,8 +33,8 @@ dispatch(aboutActions.getListAbout())
         <div className="overlay"></div>
         <div className="container">
           <div className="row no-gutters slider-text align-items-end">
-            <div className="col-md-9  pb-5">
-              <p className="breadcrumbs mb-2">
+            <div className="pb-5 col-md-9">
+              <p className="mb-2 breadcrumbs">
                 <span className="mr-2">
                   <a href="index.html">
                     Home <i className="ion-ios-arrow-forward"></i>
@@ -49,7 +55,7 @@ dispatch(aboutActions.getListAbout())
           <div className="row d-flex no-gutters">
             <div className="col-md-6 d-flex order-md-last">
               <div
-                className="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
+                className="mb-4 img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-sm-0"
                 style={{
                   backgroundImage: `url(  ${bg3})`,
                   marginTop: 30,
@@ -57,7 +63,7 @@ dispatch(aboutActions.getListAbout())
               ></div>
             </div>
             <div className="col-md-6 pr-md-5 py-md-5">
-              <div className="heading-section pt-md-5 mb-4">
+              <div className="mb-4 heading-section pt-md-5">
                 <span className="subheading">About us</span>
                 <h2 className="mb-2">Give a helping hand to a needy people</h2>
                 <p>
@@ -83,14 +89,14 @@ dispatch(aboutActions.getListAbout())
 
       <section className="ftco-section">
         <div className="container">
-          <div className="row justify-content-center pb-5">
-            <div className="col-md-7 heading-section text-center ">
+          <div className="pb-5 row justify-content-center">
+            <div className="text-center col-md-7 heading-section ">
               <span className="subheading">Welcome to Unicare</span>
               <h2>We Believe that We Can Save More Lifes with You</h2>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-3 services-2 w-100 text-center">
+            <div className="text-center col-md-3 services-2 w-100">
               <div className="icon icon-1 d-flex align-items-center justify-content-center">
                 <span className="flaticon-water-drop"></span>
               </div>
@@ -102,7 +108,7 @@ dispatch(aboutActions.getListAbout())
                 </p>
               </div>
             </div>
-            <div className="col-md-3 services-2 w-100 text-center">
+            <div className="text-center col-md-3 services-2 w-100">
               <div className="icon icon-2 d-flex align-items-center justify-content-center">
                 <span className="flaticon-stethoscope"></span>
               </div>
@@ -114,7 +120,7 @@ dispatch(aboutActions.getListAbout())
                 </p>
               </div>
             </div>
-            <div className="col-md-3 services-2 w-100 text-center">
+            <div className="text-center col-md-3 services-2 w-100">
               <div className="icon icon-3 d-flex align-items-center justify-content-center">
                 <span className="flaticon-bread"></span>
               </div>
@@ -126,7 +132,7 @@ dispatch(aboutActions.getListAbout())
                 </p>
               </div>
             </div>
-            <div className="col-md-3 services-2 w-100 text-center">
+            <div className="text-center col-md-3 services-2 w-100">
               <div className="icon icon-4 d-flex align-items-center justify-content-center">
                 <span className="flaticon-university"></span>
               </div>
@@ -145,7 +151,7 @@ dispatch(aboutActions.getListAbout())
       <section className="ftco-counter" id="section-counter">
         <div className="container">
           <div className="row">
-            <div className="col-md-3 mb-5 mb-md-0 text-center text-md-left">
+            <div className="mb-5 text-center col-md-3 mb-md-0 text-md-left">
               <h2
                 className="font-weight-bold"
                 style={{ color: "#fff", fontSize: "22px" }}
@@ -159,7 +165,7 @@ dispatch(aboutActions.getListAbout())
             <div className="col-md-9">
               <div className="row">
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="88984">
                         0
@@ -171,7 +177,7 @@ dispatch(aboutActions.getListAbout())
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="65000">
                         0
@@ -183,7 +189,7 @@ dispatch(aboutActions.getListAbout())
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="77000">
                         0
@@ -195,7 +201,7 @@ dispatch(aboutActions.getListAbout())
                   </div>
                 </div>
                 <div className="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ">
-                  <div className="block-18 text-center">
+                  <div className="text-center block-18">
                     <div className="text">
                       <strong className="number" data-number="50">
                         0
@@ -215,8 +221,8 @@ dispatch(aboutActions.getListAbout())
       <section className="ftco-section testimony-section">
         <div className="overlay"></div>
         <div className="container">
-          <div className="row justify-content-center pb-5">
-            <div className="col-md-7 heading-section heading-section-white text-center ">
+          <div className="pb-5 row justify-content-center">
+            <div className="text-center col-md-7 heading-section heading-section-white ">
               <span className="subheading">Testimony</span>
               <h2>Happy Clients &amp; Feedbacks</h2>
             </div>
@@ -234,7 +240,7 @@ dispatch(aboutActions.getListAbout())
                             backgroundImage: `url(  ${person1})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -264,7 +270,7 @@ dispatch(aboutActions.getListAbout())
                             backgroundImage: `url(  ${person2})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -294,7 +300,7 @@ dispatch(aboutActions.getListAbout())
                             backgroundImage: `url(  ${person3})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -324,7 +330,7 @@ dispatch(aboutActions.getListAbout())
                             backgroundImage: `url(  ${person4})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -354,7 +360,7 @@ dispatch(aboutActions.getListAbout())
                             backgroundImage: `url(  ${person1})`,
                           }}
                         ></div>
-                        <div className="text pl-4">
+                        <div className="pl-4 text">
                           <span className="quote d-flex align-items-center justify-content-center">
                             <i className="fa fa-quote-left"></i>
                           </span>
@@ -392,7 +398,7 @@ dispatch(aboutActions.getListAbout())
             </div>
             <div className="col-md-4 col-lg-4 d-flex align-items-center justify-content-end">
               <p className="mb-0">
-                <a href="#" className="btn btn-primary py-3 px-4">
+                <a href="#" className="px-4 py-3 btn btn-primary">
                   Become A Volunteer
                 </a>
               </p>

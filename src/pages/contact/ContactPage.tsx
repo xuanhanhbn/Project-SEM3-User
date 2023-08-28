@@ -8,6 +8,10 @@ import FormControl from "@mui/material/FormControl";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, Controller } from "react-hook-form";
 
+import { requestContact } from "./type";
+import { useAppDispatch } from "store/hook";
+import { contactActions } from "./contactSlice";
+
 import {
   DataRequestInput,
   inputContact,
@@ -16,6 +20,8 @@ import {
 } from "./constants";
 
 function ContactPage() {
+  const dispatch = useAppDispatch();
+
   const {
     handleSubmit,
     control,
@@ -32,7 +38,9 @@ function ContactPage() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: requestContact) => {
+    dispatch(contactActions.onContact(data));
+  };
 
   // render input
   const renderInput = (item: typeInputContact) => {
